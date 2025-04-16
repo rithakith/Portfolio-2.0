@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 const HeroPhotoSection: React.FC = () => {
   return (
     <div className="lg:w-2/5 md:w-1/3 flex items-center justify-center ">

@@ -50,7 +50,6 @@ export default function MyHighlightsSection(): JSX.Element {
               key={`p_${i}`}
               i={i}
               url={project?.link}
-              src={project?.src}
               title={project?.title}
               color={project?.color}
               description={project?.description}
@@ -69,7 +68,6 @@ interface CardProps {
   i: number;
   title: string;
   description: string;
-  src: string;
   url: string;
   color: string;
   progress: MotionValue<number>;
@@ -79,7 +77,6 @@ interface CardProps {
   i,
   title,
   description,
-  src,
   url,
   color,
   progress,

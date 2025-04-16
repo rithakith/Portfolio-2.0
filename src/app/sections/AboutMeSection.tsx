@@ -1,7 +1,6 @@
 import React from "react";
 import SectionTitle from "../components/SectionTitle";
 import AboutMeContent from "../components/AboutMeContent";
-import StatsGrid from "../components/StatsGrid";
 import { FeaturesSectionDemo } from "../components/FeatureSection";
 const AboutMeSection: React.FC = () => {
   return (

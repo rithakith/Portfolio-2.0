@@ -138,7 +138,7 @@ export default function MyProjectSection() {
 
       {/* Cards List */}
       <ul className="max-w-4xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 items-start gap-4">
-  {cards.map((card, index) => (
+  {cards.map((card) => (
     <motion.div
       layoutId={`card-${card.title}-${id}`}
       key={card.title}

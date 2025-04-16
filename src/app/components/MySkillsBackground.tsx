@@ -5,6 +5,25 @@ import Image from 'next/image';
 
 function BlockOne() {
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Convert your object of Sets into an array of Sets
+  const activeBlocks: Set<number>[] = Array(16).fill(new Set<number>());
+  
+  // Fill in the specific positions with your Sets
+  activeBlocks[0] = new Set([2, 4, 6]);
+  activeBlocks[1] = new Set([0, 8]);
+  activeBlocks[2] = new Set([1, 3, 5]);
+  activeBlocks[4] = new Set([0, 5, 8]);
+  activeBlocks[5] = new Set([2, 4]);
+  activeBlocks[7] = new Set([2, 6, 9]);
+  activeBlocks[8] = new Set([0, 4]);
+  activeBlocks[9] = new Set([5]);
+  activeBlocks[10] = new Set([3, 6]);
+  activeBlocks[11] = new Set([1, 5]);
+  activeBlocks[12] = new Set([7]);
+  activeBlocks[13] = new Set([2, 4]);
+  activeBlocks[14] = new Set([5]);
+  activeBlocks[15] = new Set([1, 6]);
 
   return (
     <div className="relative w-full">
@@ -29,22 +48,7 @@ function BlockOne() {
           divClass='dark:border-[#131212] border-color1'
           classname='w-full'
           containerRef={containerRef}
-          activeDivs={{
-            0: new Set([2, 4, 6]),
-            1: new Set([0, 8]),
-            2: new Set([1, 3, 5]),
-            4: new Set([0, 5, 8]),
-            5: new Set([2, 4]),
-            7: new Set([2, 6, 9]),
-            8: new Set([0, 4]),
-            9: new Set([5]),
-            10: new Set([3, 6]),
-            11: new Set([1, 5]),
-            12: new Set([7]),
-            13: new Set([2, 4]),
-            14: new Set([5]),
-            15: new Set([1, 6]),
-          }}
+          activeDivs={activeBlocks}
         />
       </div>
     </div>

@@ -2,7 +2,6 @@
 import React from 'react'
 import HeroContentSection from '../components/HeroContentSection'
 import HeroPhotoSection from '../components/HeroPhotoSection'
-import { Sparkles } from '../components/Sparkles'
 const HeroSection: React.FC = () => {
   return (
     <section id='hero' className="relative min-h-screen flex flex-col md:flex-row overflow-hidden">

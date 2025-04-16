@@ -3,8 +3,13 @@
 import { useEffect, useId, useState } from 'react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
-import type { IOptions } from '@tsparticles/engine';
-import type { RecursivePartial } from '@tsparticles/engine';
+import type { IOptions, RecursivePartial } from '@tsparticles/engine';
+
+// Define the possible direction values explicitly
+type ParticleDirection = 
+  | "top" | "top-right" | "right" | "bottom-right" 
+  | "bottom" | "bottom-left" | "left" | "top-left"
+  | "none" | number;
 
 interface SparklesProps {
   className?: string;
@@ -14,14 +19,14 @@ interface SparklesProps {
   speed?: number;
   minSpeed?: number | null;
   opacity?: number;
-  direction?: string;
+  direction?: ParticleDirection;
   opacitySpeed?: number;
   minOpacity?: number | null;
   color?: string;
   mousemove?: boolean;
   hover?: boolean;
   background?: string;
-  options?: Record<string, any>; // Adjust type as needed based on `options` structure
+  options?: RecursivePartial<IOptions>;
 }
 
 export function Sparkles({
@@ -32,14 +37,13 @@ export function Sparkles({
   speed = 1.5,
   minSpeed = null,
   opacity = 1,
-  direction = '',
+  direction = 'none',
   opacitySpeed = 3,
   minOpacity = null,
   color = '#ffffff',
   mousemove = false,
   hover = false,
   background = 'transparent',
-  options = {},
 }: SparklesProps) {
   const [isReady, setIsReady] = useState(false);
 
@@ -52,7 +56,7 @@ export function Sparkles({
   }, []);
 
   const id = useId();
-  const defaultOptions = {
+  const defaultOptions: RecursivePartial<IOptions> = {
     background: {
       color: {
         value: background,
@@ -79,7 +83,10 @@ export function Sparkles({
             smooth: 10,
           },
         },
-        resize: true as any,
+        resize: {
+          enable: true,
+          delay: 0.5,
+        },
       },
       modes: {
         push: {
@@ -97,7 +104,7 @@ export function Sparkles({
       },
       move: {
         enable: true,
-        direction,
+        direction: direction , // Type assertion needed here unfortunately
         speed: {
           min: minSpeed || speed / 130,
           max: speed,
@@ -149,11 +156,10 @@ export function Sparkles({
   return (
     isReady && (
       <Particles
-      id={id}
-      options={defaultOptions as RecursivePartial<IOptions>}
-      className={className}
-    />
-    
+        id={id}
+        options={defaultOptions}
+        className={className}
+      />
     )
   );
 }

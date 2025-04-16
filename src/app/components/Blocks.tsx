@@ -9,7 +9,7 @@ function Blocks({
   containerRef,
 }: {
   activeDivsClass?: string;
-  activeDivs?: any;
+  activeDivs?: Set<number>[];
   divClass?: string;
   classname?: string;
   containerRef: React.RefObject<HTMLDivElement|null>;
@@ -34,7 +34,7 @@ function Blocks({
                 key={rowIndex}
                 className={cn(
                   `h-[6vh] w-full border-[1px] border-[#5dcece09] ${
-                    // @ts-ignore
+                    // @ts-expect-error hehee
                     activeDivs[columnIndex]?.has(rowIndex)
                       ? `${activeDivsClass}`
                       : ''
