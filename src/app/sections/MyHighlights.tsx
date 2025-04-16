@@ -11,7 +11,7 @@ const projects = [
     description:
       "I was a QA intern at Calcey Technologies for a six-month internship period. Even though QA wasn’t really my thing, the experience taught me a lot. It was tough to balance it with my university workload since it wasn’t during the proper internship period, but I managed. For my next internship, I plan to explore a Software Engineering role — if you want to reach out, feel free!",
     src: "rock.webp",
-    link: "/calceyintern.png",
+    link: "/calceyintern.webp",
     color: "#255496",
   },
   {
