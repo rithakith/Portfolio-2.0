@@ -5,7 +5,7 @@ const AboutMeImageSection: React.FC = () => {
     <div className="md:w-1/3 w-full">
         <div className=" p-6 rounded-md flex items-center justify-center h-full">
             <img
-            src="/aboutmeimg.png" // Replace with your image path
+            src="/aboutmeimg.webp" // Replace with your image path
             alt="About Me"
             className="rounded-full w-full object-cover"
             />

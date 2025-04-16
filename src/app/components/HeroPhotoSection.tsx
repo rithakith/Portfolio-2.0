@@ -80,7 +80,7 @@ const HeroPhotoSection: React.FC = () => {
       <section className=' dark:bg-black  rounded-lg '>
         <figure style={{ clipPath: 'url(#clip-splash1)' }}>
           <img
-            src='/me.png'
+            src='/me.webp'
             alt=''
             className='transition-all duration-300  aspect-[2/2]  align-bottom object-cover scale-75 hover:scale-60 w-full'
           />

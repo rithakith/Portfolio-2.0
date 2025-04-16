@@ -69,7 +69,7 @@ const educationItems = [
       "Completed with flying colors from Sirimavo Bandaranaike Vidyalaya, securing 9 A's and building a solid academic foundation.",
     hexColor: "#fc9cb8", // red-400
     rotate: "",
-    image: "/sirimavo.png",
+    image: "/sirimavo.webp",
   },
   {
     title: "G.C.E. Advanced Level (3As)",
@@ -77,7 +77,7 @@ const educationItems = [
       "Graduated from Visakha Vidyalaya in the Maths stream with excellent results, paving the way into the tech world.",
     hexColor: "#ffe303", // green-400
     rotate: "rotate-6",
-    image: "/visakha.png",
+    image: "/visakha.webp",
   },
   {
     title: "BSc (Hons) in IT (CGPA:3.7)",
@@ -85,7 +85,7 @@ const educationItems = [
       "Currently a second year undergraduate of University of Moratuwa.",
     hexColor: "#9b691f", // green-500
     rotate: "-rotate-6",
-    image: "/moratuwa.png",
+    image: "/moratuwa.webp",
   },
   {
     title: "Calcey Springboard Scholarship Program",
@@ -93,7 +93,7 @@ const educationItems = [
       "Completed an intensive year-long program by Calcey Technologies, gaining industry-relevant skills for software engineering.",
     hexColor: "#9c1494", // orange-400
     rotate: "",
-    image: "/calcey.png",
+    image: "/calcey.webp",
   },
   {
     title: "WSO2 DevOps & Linux Systems Training",
@@ -101,7 +101,7 @@ const educationItems = [
       "Currently engaged in a high-impact training program by WSO2, balancing academics and cutting-edge DevOps skills.",
     hexColor: "#ff7300", // blue-400
     rotate: "",
-    image: "/wso2.png",
+    image: "/wso2.webp",
   },
 ];
 

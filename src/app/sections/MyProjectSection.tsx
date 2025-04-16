@@ -234,7 +234,7 @@ const cards = [
   {
     description: "NEXT JS, TAILWIND, ASCERNITY UI, UI-LAYOUT",
     title: "Portfolio 2.0",
-    src: "/projects/portfolio2.png",
+    src: "/projects/portfolio2.webp",
     ctaText: "Visit",
     ctaLink: "https://ritharakithmanthie.vercel.app/",
     content: () => {
@@ -248,7 +248,7 @@ const cards = [
   {
     description: "NEXT JS, TURBOPACK, PRISMA, TAILWIND",
     title: "Vertextbms Site",
-    src: "/projects/vertextbms.png",
+    src: "/projects/vertextbms.webp",
     ctaText: "Visit",
     ctaLink: "https://vertexbms.com/",
     content: () => {
@@ -264,7 +264,7 @@ const cards = [
   {
     description: "MERN STACK",
     title: "Portfolio 1.0",
-    src: "/projects/portfolio.jpg",
+    src: "/projects/portfolio.webp",
     ctaText: "Visit",
     ctaLink: "https://ritharakithmanthie.vercel.app/",
     content: () => {
