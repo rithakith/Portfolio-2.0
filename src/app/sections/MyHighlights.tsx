@@ -10,7 +10,7 @@ const projects = [
     title: "QA Intern at Calcey Technologies",
     description:
       "I was a QA intern at Calcey Technologies for a six-month internship period. Even though QA wasn’t really my thing, the experience taught me a lot. It was tough to balance it with my university workload since it wasn’t during the proper internship period, but I managed. For my next internship, I plan to explore a Software Engineering role — if you want to reach out, feel free!",
-    src: "rock.jpg",
+    src: "rock.webp",
     link: "/calceyintern.png",
     color: "#255496",
   },
@@ -18,8 +18,8 @@ const projects = [
     title: "DataStorm 5.0 — 2nd Place!",
     description:
       "We won second place in DataStorm 5.0 Analytics Competition out of 150 contestants — and that too during our first year! It was such a memorable win and gave me a lot of confidence in data and team-based competitions.",
-    src: "tree.jpg",
-    link: "/datastorm.jpg",
+    src: "tree.webp",
+    link: "/datastorm.webp",
     color: "#255496",
   },
   {
@@ -27,7 +27,7 @@ const projects = [
     description:
       "I'm currently the Vice Chairwoman of the IEEE WIE Affinity Group of UoM. While juggling academics, group projects, and responsibilities isn't always easy, I genuinely love being involved — it helps me grow, connect, and give back.",
     src: "water.jpg",
-    link: "/wie.jpg",
+    link: "/wie.webp",
     color: "#071a38",
   },
 ];
