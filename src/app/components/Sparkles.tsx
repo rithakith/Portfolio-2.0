@@ -3,6 +3,8 @@
 import { useEffect, useId, useState } from 'react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
+import type { IOptions } from '@tsparticles/engine';
+import type { RecursivePartial } from '@tsparticles/engine';
 
 interface SparklesProps {
   className?: string;
@@ -116,7 +118,6 @@ export function Sparkles({
         },
         enable: false,
         maxSpeed: 50,
-        mode: 'bounce',
         overlap: {
           enable: true,
           retries: 0,
@@ -147,9 +148,12 @@ export function Sparkles({
   };
   return (
     isReady && (
-      <Particles id={id} 
-      // @ts-nocheck
-      options={defaultOptions} className={className} />
+      <Particles
+      id={id}
+      options={defaultOptions as RecursivePartial<IOptions>}
+      className={className}
+    />
+    
     )
   );
 }

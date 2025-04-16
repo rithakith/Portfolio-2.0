@@ -4,7 +4,6 @@ import React from 'react';
 import { motion } from "motion/react";
 import ButtonContactMe from './ContactMeButton';
 import ButtonGetCv from './GetCVButton';
-import { Sparkles } from './Sparkles';
 import { RandomizedTextEffect } from './RandomizedTextEffect';
 
 const HeroContentSection: React.FC = () => {

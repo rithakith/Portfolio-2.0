@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Image from 'next/image';
 const HeroPhotoSection: React.FC = () => {
   return (
     <div className="lg:w-2/5 md:w-1/3 flex items-center justify-center ">
@@ -81,7 +81,7 @@ const HeroPhotoSection: React.FC = () => {
         <figure style={{ clipPath: 'url(#clip-splash1)' }}>
           <img
             src='/me.webp'
-            alt=''
+            alt='Rithara'
             className='transition-all duration-300  aspect-[2/2]  align-bottom object-cover scale-75 hover:scale-60 w-full'
           />
         </figure>
