@@ -9,7 +9,7 @@ import {
 export function FeaturesSectionDemo() {
   const features = [
     {
-      title: "20+ Projects",
+      title: "8+ Projects",
       description: "A variety of full-stack, mobile, and experimental projects. All powered by caffeine and curiosity.",
       icon: <IconDeviceLaptop size={40} />,
     },
@@ -24,7 +24,7 @@ export function FeaturesSectionDemo() {
       icon: <IconTerminal2 size={40} />,
     },
     {
-      title: "900+ Cups of Nescafe",
+      title: "100+ Cups of Nescafe",
       description: "The real backend of every project. Highly reliable, consistently dark, and mostly Colombian.",
       icon: <IconCoffee size={40} />,
     },
