@@ -45,6 +45,7 @@ const skillImages = [
 const MySkillsSection: React.FC = () => {
   return (
     <section id="skills" className="min-h-screen w-full px-4 pt-4 py-12 flex flex-col gap-8 ">
+      <div className="mt-4"></div>
       <SectionTitle title="My Skills" />
 
       <div className="sm:mx-24 flex-1 rounded-md flex items-center justify-center">

@@ -128,7 +128,7 @@ interface CardProps {
           </div>
 
           {/* Description */}
-          <div className="w-full md:w-[50%] text-justify text-base md:text-lg">
+          <div className="w-full md:w-[50%] text-justify text-base md:text-md lg:text-lg text-sm ">
             <p>{description}</p>
           </div>
         </div>
