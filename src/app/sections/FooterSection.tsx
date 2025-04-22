@@ -1,9 +1,7 @@
-
 "use client";
 import React from "react";
 
 const FooterSection: React.FC = () => {
-  // OnClick handlers
   const handleEmailClick = () => {
     window.location.href = "mailto:ritharaedirisinghe@gmail.com";
   };
@@ -13,8 +11,7 @@ const FooterSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full px-4 pb-12 flex flex-col gap-2 sm:gap-12 items-center">
-
+    <footer className="w-full px-4  pb-4 flex flex-col items-center justify-center  dark:bg-[#111] mt-auto">
       <div className="flex gap-6 items-center justify-center">
         {/* LinkedIn */}
         <a
@@ -23,7 +20,7 @@ const FooterSection: React.FC = () => {
           rel="noopener noreferrer"
           className="hover:scale-110 transition-transform"
         >
-          <img src="/socialmedia/linkedin.png" alt="LinkedIn" className="sm:w-32 w-12 h-12 sm:h-32" />
+          <img src="/socialmedia/linkedin.png" alt="LinkedIn" className="sm:w-24 w-12 h-12 sm:h-24" />
         </a>
 
         {/* GitHub */}
@@ -33,7 +30,7 @@ const FooterSection: React.FC = () => {
           rel="noopener noreferrer"
           className="hover:scale-110 transition-transform"
         >
-          <img src="/socialmedia/github.png" alt="GitHub" className="sm:w-32 w-12 h-12 sm:h-32" />
+          <img src="/socialmedia/github.png" alt="GitHub" className="sm:w-24 w-12 h-12 sm:h-24" />
         </a>
 
         {/* Medium */}
@@ -43,7 +40,7 @@ const FooterSection: React.FC = () => {
           rel="noopener noreferrer"
           className="hover:scale-110 transition-transform"
         >
-          <img src="/socialmedia/medium.png" alt="Medium" className="sm:w-32 w-12 h-12 sm:h-32" />
+          <img src="/socialmedia/medium.png" alt="Medium" className="sm:w-24 w-12 h-12 sm:h-24" />
         </a>
 
         {/* Gmail */}
@@ -51,7 +48,7 @@ const FooterSection: React.FC = () => {
           onClick={handleEmailClick}
           className="hover:scale-110 transition-transform"
         >
-          <img src="/socialmedia/gmail.png" alt="Email" className="sm:w-32 w-12 h-12 sm:h-32" />
+          <img src="/socialmedia/gmail.png" alt="Email" className="sm:w-24 w-12 h-12 sm:h-24" />
         </button>
 
         {/* WhatsApp */}
@@ -59,10 +56,14 @@ const FooterSection: React.FC = () => {
           onClick={handleWhatsAppClick}
           className="hover:scale-110 transition-transform"
         >
-          <img src="/socialmedia/whatsapp.png" alt="WhatsApp" className="sm:w-32 w-12 h-12 sm:h-32" />
+          <img src="/socialmedia/whatsapp.png" alt="WhatsApp" className="sm:w-24 w-12 h-12 sm:h-24" />
         </button>
       </div>
-    </section>
+
+      <p className="text-xs sm:text-sm mt-12 text-gray-500 dark:text-gray-400 text-center">
+        © {new Date().getFullYear()} Rithara Kithmanthie. All rights reserved.
+      </p>
+    </footer>
   );
 };
 
