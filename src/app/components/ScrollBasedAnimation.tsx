@@ -38,7 +38,7 @@ export default function ScrollBaseAnimation({
     clamp: false,
   });
 
-  const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+  const x = useTransform(baseX, (v) => `${wrap(-200, -45, v)}%`);
 
   const directionFactor = useRef<number>(1);
   const hasStarted = useRef(false); // Track animation start status
@@ -76,7 +76,7 @@ export default function ScrollBaseAnimation({
     className='flex whitespace-nowrap gap-10'
     style={{ x }}
   >
-    {Array.from({ length: 10 }).map((_, i) => (
+    {Array.from({ length: 50 }).map((_, i) => (
       <span key={i} className={cn(`block text-[8vw]`, clasname)}>
         {children}
       </span>

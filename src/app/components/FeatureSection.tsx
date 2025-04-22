@@ -12,6 +12,7 @@ export function FeaturesSectionDemo() {
       title: "8+ Projects",
       description: "A variety of full-stack, mobile, and experimental projects. All powered by caffeine and curiosity.",
       icon: <IconDeviceLaptop size={40} />,
+      link: "https://github.com/rithakith?tab=repositories", // replace with your actual GitHub profile or repo
     },
     {
       title: "3+ Years of Experience",
@@ -32,10 +33,21 @@ export function FeaturesSectionDemo() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  px-4 gap-8 relative z-10 py-10 max-w-7xl mx-auto">
-      {features.map((feature) => (
+    {features.map((feature) =>
+      feature.link ? (
+        <a
+          key={feature.title}
+          href={feature.link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Feature {...feature} />
+        </a>
+      ) : (
         <Feature key={feature.title} {...feature} />
-      ))}
-    </div>
+      )
+    )}
+  </div>
   );
 }
 const Feature = ({
