@@ -28,6 +28,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
         <head>
         <Script
+          id="clarity-analytics" 
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
