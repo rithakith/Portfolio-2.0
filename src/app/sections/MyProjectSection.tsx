@@ -240,7 +240,7 @@ const cards = [
     title: "Portfolio 2.0",
     src: "/projects/portfolio2.webp",
     ctaText: "Visit Site",
-    ctaLink: "https://ritharakithmanthie.vercel.app/",
+    ctaLink: "http://rithara.dev/",
     content: () => {
       return (
         <p>
