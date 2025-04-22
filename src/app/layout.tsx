@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import GlobalSparkles from "./components/GlobalSparkles";
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,10 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-<html lang="en" className="scroll-smooth">
-<body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
-      >
+    <html lang="en" className="scroll-smooth">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}>
         <Navbar />
         <GlobalSparkles />
         <main className="relative z-10">{children}</main>

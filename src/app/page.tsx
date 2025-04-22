@@ -7,18 +7,20 @@ import MyBlogsSection from "./sections/MyBlogsSection";
 import MySkillsSection from "./sections/MySkillsSection";
 import FooterSection from "./sections/FooterSection";
 import ScrollingText from "./components/ScrollingText";
+import BackToTopButton from "./components/BackToTop";
 export default function Home() {
   return (
     <>
-{/* <BlockOne /> */}
       <HeroSection />
       <AboutMeSection />
       <EducationSection />
-<MyHighlightsSection />
-<MyProjectSection/>      <MySkillsSection />
+      <MyHighlightsSection />
+      <MyProjectSection />
+      <MySkillsSection />
       <MyBlogsSection />
-      <ScrollingText/>
+      <ScrollingText />
       <FooterSection />
+      <BackToTopButton />  {/* Include the BackToTopButton here */}
     </>
   );
 }
