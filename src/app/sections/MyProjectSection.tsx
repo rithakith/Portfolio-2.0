@@ -52,7 +52,7 @@ export default function MyProjectSection() {
             <motion.div
   layoutId={`card-${active.title}-${id}`}
   ref={ref}
-  className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col 
+  className="w-full max-w-[600px] h-full md:h-fit md:max-h-[90%] flex flex-col 
              bg-white/5 dark:bg-white/10 backdrop-blur-md 
              border border-white/30 shadow-lg 
              sm:rounded-3xl overflow-hidden"
