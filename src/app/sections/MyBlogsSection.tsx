@@ -4,6 +4,11 @@ import BlogCard from '../components/BlogCard';
 
 const blogData = [
   {
+    title: 'Predicting the Next Character with RNN: A Simple Introduction Using Shakespeare’s Text',
+    image: '/blogs/rnn.webp',
+    link: 'https://medium.com/@ritharaedirisinghe/predicting-the-next-character-with-rnn-a-simple-introduction-using-shakespeares-text-88e62550ac17',
+  },
+  {
     title: 'From 1,500 Applicants to 28 Graduates: My Intense Yet Rewarding Calcey Springboard Scholarship Experience',
     image: '/blogs/springboard.webp',
     link: 'https://medium.com/@ritharaedirisinghe/from-1-500-applicants-to-28-graduates-my-intense-yet-rewarding-calcey-springboard-scholarship-af577aecf1cf',

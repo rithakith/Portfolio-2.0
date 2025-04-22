@@ -9,15 +9,14 @@ const projects = [
   {
     title: "QA Intern at Calcey Technologies",
     description:
-      "I was a QA intern at Calcey Technologies for a six-month internship period. Even though QA wasn’t really my thing, the experience taught me a lot. It was tough to balance it with my university workload since it wasn’t during the proper internship period, but I managed. For my next internship, I plan to explore a Software Engineering role — if you want to reach out, feel free!",
+    "I got the opportunity to work as a QA Intern at Calcey Technologies for a six-month internship. During that time, I worked on three different projects, guided by three amazing mentors from each project. My work involved UX demos, bug reporting, writing test cases, and performing regression testing. This experience taught me a lot about real-world software processes. It was a bit challenging to juggle it with university since it wasn’t during the official internship period — but I made it work.",
     src: "rock.webp",
     link: "/calceyintern.webp",
     color: "#255496",
   },
   {
     title: "DataStorm 5.0 — 2nd Place!",
-    description:
-      "We won second place in DataStorm 5.0 Analytics Competition out of 150 contestants — and that too during our first year! It was such a memorable win and gave me a lot of confidence in data and team-based competitions.",
+    description: "We won second place in the DataStorm 5.0 Analytics Competition out of 150 teams. In the first round, we had to build a supervised model, followed by an unsupervised model in the second. The final round pushed us even further, where we had to use LLMs to create an AI model and pitch it to a panel. A lot of the concepts were new to us, especially as first-years, but we learned fast and managed to implement everything within a tight deadline. It was an intense but unforgettable experience that really boosted our confidence in data science and teamwork.",
     src: "tree.webp",
     link: "/datastorm.webp",
     color: "#255496",
@@ -25,7 +24,7 @@ const projects = [
   {
     title: "Vice Chairwoman – IEEE WIE UoM",
     description:
-      "I'm currently the Vice Chairwoman of the IEEE WIE Affinity Group of UoM. While juggling academics, group projects, and responsibilities isn't always easy, I genuinely love being involved — it helps me grow, connect, and give back.",
+      " I'm currently the Vice Chairwoman of the IEEE WIE Affinity Group of UoM. Alongside academics and group projects, I've chaired events, coordinated and guided members, and mentored several projects as well. It’s been a rewarding experience that’s helped me grow as a leader while giving back to a community I care about.",
     src: "water.jpg",
     link: "/wie.webp",
     color: "#071a38",

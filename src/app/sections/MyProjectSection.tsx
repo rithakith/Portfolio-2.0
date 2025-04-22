@@ -34,7 +34,7 @@ export default function MyProjectSection() {
   return (
     <section id="projects" className="pt-16">
       <SectionTitle title="My Projects" />
-      <div className="mb-2"></div>
+  
       <AnimatePresence>
         {active && typeof active === "object" && (
           <motion.div
@@ -104,6 +104,7 @@ export default function MyProjectSection() {
                       {active.description}
                     </motion.p>
                   </div>
+                  {active.ctaText && active.ctaLink && (
 
                   <motion.a
                     layout
@@ -115,7 +116,7 @@ export default function MyProjectSection() {
                     className="px-4 py-3 text-sm rounded-full font-bold bg-color1 text-white"
                   >
                     {active.ctaText}
-                  </motion.a>
+                  </motion.a>)}
                 </div>
                 <div className="pt-4 relative px-4">
                   <motion.div
@@ -178,16 +179,19 @@ export default function MyProjectSection() {
         </div>
 
         {/* CTA Link */}
-        <div className="mt-4 flex justify-center">
-          <a
-            href={card.ctaLink}
-            target="_blank"
-            onClick={(e) => e.stopPropagation()}
-            className="px-4 py-2 text-sm rounded-sm width-fit font-bold bg-color1 text-white"
-          >
-            {card.ctaText}
-          </a>
-        </div>
+        {card.ctaText && card.ctaLink && (
+  <div className="mt-4 flex justify-center">
+    <a
+      href={card.ctaLink}
+      target="_blank"
+      onClick={(e) => e.stopPropagation()}
+      className="px-4 py-2 text-sm rounded-sm width-fit font-bold bg-color1 text-white"
+    >
+      {card.ctaText}
+    </a>
+  </div>
+)}
+
       </div>
     </motion.div>
   ))}
@@ -235,7 +239,7 @@ const cards = [
     description: "NEXT JS, TAILWIND, ASCERNITY UI, UI-LAYOUT",
     title: "Portfolio 2.0",
     src: "/projects/portfolio2.webp",
-    ctaText: "Visit",
+    ctaText: "Visit Site",
     ctaLink: "https://ritharakithmanthie.vercel.app/",
     content: () => {
       return (
@@ -246,10 +250,27 @@ const cards = [
     },
   },
   {
+    description: "PYTHON, TKINTER, SQLITE",
+    title: "UoM Internal Admin Tool",
+    src: "/projects/finance.webp", // Update this with your actual image path
+    ctaText: "",
+    ctaLink: "#", // Replace with actual link or modal trigger if available
+    content: () => {
+      return (
+        <p>
+          This project was developed for an internal administration division at the University of Moratuwa by IES Labs, Faculty of IT.
+          Built using Python and Tkinter, it streamlined various admin processes with a user-friendly interface and SQLite database support.
+          I was glad to be one of the contributing team members in this collaborative effort.
+        </p>
+      );
+    },
+  },
+  
+  {
     description: "NEXT JS, TURBOPACK, PRISMA, TAILWIND",
     title: "Vertextbms Site",
     src: "/projects/vertextbms.webp",
-    ctaText: "Visit",
+    ctaText: "Visit Site",
     ctaLink: "https://vertexbms.com/",
     content: () => {
       return (
@@ -265,7 +286,7 @@ const cards = [
     description: "MERN STACK",
     title: "Portfolio 1.0",
     src: "/projects/portfolio.webp",
-    ctaText: "Visit",
+    ctaText: "Visit Site",
     ctaLink: "https://ritharakithmanthie.vercel.app/",
     content: () => {
       return (
@@ -275,5 +296,22 @@ const cards = [
       );
     },
   },
+  {
+    description: "FIREBASE, REACT.JS, ARDUINO IDE, ESP32, IOT",
+    title: "BeeWise",
+    src: "/projects/hardware.webp", // make sure to place the correct image at this path
+    ctaText: "View Project in LinkedIn",
+    ctaLink: "https://www.linkedin.com/in/ritharak/details/projects/", // replace with the actual deployed URL if available
+    content: () => {
+      return (
+        <p>
+          BeeWise is an advanced IoT solution transforming beekeeping with real-time monitoring and automation. 
+          I developed the web application for this system using React.js and Firebase, enabling real-time tracking of hive conditions through ESP32 microcontrollers.
+          The app visualizes sensor data through charts and ensures continuous storage for long-term insights.
+        </p>
+      );
+    },
+  }
+  
  
 ];

@@ -64,6 +64,40 @@ const EducationSection: React.FC = () => {
 };
 const educationItems = [
   {
+    title: "BSc (Hons) in IT (CGPA:3.6)",
+    description:
+      "Currently a second year undergraduate of University of Moratuwa.",
+    hexColor: "#9b691f", // green-500
+    rotate: "",
+    image: "/moratuwa.webp",
+  },
+  {
+    title: "G.C.E. Advanced Level (3As)",
+    description:
+      "Graduated from Visakha Vidyalaya in the Maths stream with excellent results, paving the way into the tech world.",
+    hexColor: "#ffe303", // green-400
+    rotate: "-rotate-6",
+    image: "/visakha.webp",
+  },
+   
+  {
+    title: "Calcey Springboard Scholarship Program",
+    description:
+      "Completed an intensive year-long program by Calcey Technologies, gaining industry-relevant skills for software engineering.",
+    hexColor: "#9c1494", // orange-400
+    rotate: "rotate-6",
+    image: "/calcey.webp",
+  },
+  
+  {
+    title: "WSO2 DevOps & Linux Systems Training",
+    description:
+      "Currently engaged in a high-impact training program by WSO2, balancing academics and cutting-edge DevOps skills.",
+    hexColor: "#ff7300", // blue-400
+    rotate: "-rotate-6",
+    image: "/wso2.webp",
+  },
+  {
     title: "G.C.E. Ordinary Level (9As)",
     description:
       "Completed with flying colors from Sirimavo Bandaranaike Vidyalaya, securing 9 A's and building a solid academic foundation.",
@@ -71,38 +105,8 @@ const educationItems = [
     rotate: "",
     image: "/sirimavo.webp",
   },
-  {
-    title: "G.C.E. Advanced Level (3As)",
-    description:
-      "Graduated from Visakha Vidyalaya in the Maths stream with excellent results, paving the way into the tech world.",
-    hexColor: "#ffe303", // green-400
-    rotate: "rotate-6",
-    image: "/visakha.webp",
-  },
-  {
-    title: "BSc (Hons) in IT (CGPA:3.7)",
-    description:
-      "Currently a second year undergraduate of University of Moratuwa.",
-    hexColor: "#9b691f", // green-500
-    rotate: "-rotate-6",
-    image: "/moratuwa.webp",
-  },
-  {
-    title: "Calcey Springboard Scholarship Program",
-    description:
-      "Completed an intensive year-long program by Calcey Technologies, gaining industry-relevant skills for software engineering.",
-    hexColor: "#9c1494", // orange-400
-    rotate: "",
-    image: "/calcey.webp",
-  },
-  {
-    title: "WSO2 DevOps & Linux Systems Training",
-    description:
-      "Currently engaged in a high-impact training program by WSO2, balancing academics and cutting-edge DevOps skills.",
-    hexColor: "#ff7300", // blue-400
-    rotate: "",
-    image: "/wso2.webp",
-  },
+ 
+
 ];
 
 export default EducationSection;

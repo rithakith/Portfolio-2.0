@@ -33,6 +33,8 @@ const skillImages = [
   { src: "/skills/sqlite.png", alt: "Git" },
   { src: "/skills/docker.webp", alt: "Git" },
   { src: "/skills/kubernetes.webp", alt: "Git" },
+  { src: "/skills/prisma.png", alt: "Git" },
+
 
 
 
