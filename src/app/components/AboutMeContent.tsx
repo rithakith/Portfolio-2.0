@@ -3,15 +3,17 @@
 import React from "react";
 import AboutMeImageSection from "./AboutMeImageSection";
 import { TextGenerateEffect } from "./TextGenerateEffect";
-const aboutMeWords = `Hey There 🤪🤪
+const aboutMeWords = `Hi, I’m Rithara Kithmanthie — a second-year student at the University of Moratuwa, pursuing a BSc in Information Technology. I love diving into new technologies just to see what I can create next.
 
-I’m someone who literally can’t survive without my 💻 — like, it’s basically my emotional support device. I’ve opened it on buses, benches, beds, and borderline every surface that supports gravity.
+I’ve worked on various projects using Next.js, Flutter, React, Angular, .NET and Springboot, and I enjoy building full-stack apps with clean architecture and smooth UI. During my internship at Calcey Technologies, I got hands-on experience in QA engineering, and I’m now looking forward to taking on more software engineering roles.
 
-Whenever I’m bored , I end up experimenting with a new tech stack just for the fun of it. Yes, my GitHub is chaos — and I’m proud of it 😎.
+As the Vice Chairwoman of IEEE Women in Engineering (WIE) – UoM, I’ve had the privilege of mentoring student-led projects and organizing impactful tech events that bring people together. I also placed second in the DataStorm 5.0 Analytics Competition, competing with over 150 teams from across the country.
 
-I'm also a die-hard anime fan and I’ve never missed a Marvel movie — no matter how questionable some of them were (yes, I watched She-Hulk too 🥴).
+On the fun side — I’m an extrovert, a huge Marvel fan, a manga lover, and someone who enjoys connecting with people, whether it’s through tech, music, or casual conversation. ✨
 
-ESTJ in the wild 🌟 I love socializing, hyping people up, and laughing at my own jokes. So hit me up if you're into coding convos, Marvel rants, or just chilling with a laptop nearby 😏
+Let’s connect and create something awesome!
+
+
 `;
 
 const AboutMeContent: React.FC = () => {
