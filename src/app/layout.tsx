@@ -34,7 +34,7 @@ export default function RootLayout({
             __html: `
               (function(c,l,a,r,i,t,y){
                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/YOUR_PROJECT_ID";
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/r88695udrv";
                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
               })(window, document, "clarity", "script", "r88695udrv");
             `,
