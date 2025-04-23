@@ -22,14 +22,14 @@ const EducationSection: React.FC = () => {
         <section className="text-white w-full">
           <div className="flex flex-col lg:flex-row justify-between gap-12 lg:gap-0">
             {/* Left Column - Cards */}
-            <div className="flex flex-col gap-8 lg:gap-1 w-full  lg:w-2/3">
+            <div className="flex flex-col gap-8 lg:gap-1 w-full lg:w-2/3">
               {educationItems.map((item, idx) => (
                 <figure
                   key={idx}
-                  className="sticky top-10 h-[90vh] px-2  flex flex-col lg:flex-row items-center justify-center gap-6"
+                  className="sticky top-10 h-[90vh] px-2 flex flex-col lg:flex-row items-center justify-center gap-6"
                 >
                   <article
-                    className={`w-full max-w-md rounded-lg p-6 flex flex-col lg:flex-row items-center lg:items-center justify-between gap-y-4 lg:gap-x-6 ${item.rotate}`}
+                    className={`w-full max-w-md rounded-lg p-6 flex flex-col lg:flex-row items-center lg:items-center justify-between gap-y-4 lg:gap-x-6 ${item.rotateClass}`}
                     style={{
                       background: `${hexToGlass(item.hexColor, 0.75)}`,
                       backdropFilter: "blur(16px)",
@@ -68,7 +68,7 @@ const educationItems = [
     description:
       "Currently a second year undergraduate of University of Moratuwa.",
     hexColor: "#9b691f", // green-500
-    rotate: "",
+    rotateClass: "md:rotate-0",
     image: "/moratuwa.webp",
   },
   {
@@ -76,7 +76,7 @@ const educationItems = [
     description:
       "Graduated from Visakha Vidyalaya in the Maths stream with excellent results, paving the way into the tech world.",
     hexColor: "#ffe303", // green-400
-    rotate: "-rotate-6",
+    rotateClass: "md:-rotate-6",
     image: "/visakha.webp",
   },
    
@@ -85,7 +85,7 @@ const educationItems = [
     description:
       "Completed an intensive year-long program by Calcey Technologies, gaining industry-relevant skills for software engineering.",
     hexColor: "#9c1494", // orange-400
-    rotate: "rotate-6",
+    rotateClass: "md:rotate-6",
     image: "/calcey.webp",
   },
   
@@ -94,7 +94,7 @@ const educationItems = [
     description:
       "Currently engaged in a high-impact training program by WSO2, balancing academics and cutting-edge DevOps skills.",
     hexColor: "#ff7300", // blue-400
-    rotate: "-rotate-6",
+    rotateClass: "md:-rotate-6",
     image: "/wso2.webp",
   },
   {
@@ -102,11 +102,9 @@ const educationItems = [
     description:
       "Completed with flying colors from Sirimavo Bandaranaike Vidyalaya, securing 9 A's and building a solid academic foundation.",
     hexColor: "#fc9cb8", // red-400
-    rotate: "",
+    rotateClass: "md:rotate-0",
     image: "/sirimavo.webp",
   },
- 
-
 ];
 
 export default EducationSection;

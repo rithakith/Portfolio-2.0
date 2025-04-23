@@ -9,7 +9,7 @@ const projects = [
   {
     title: "QA Intern at Calcey Technologies",
     description:
-    "I got the opportunity to work as a QA Intern at Calcey Technologies for a six-month internship. During that time, I worked on three different projects, guided by three amazing mentors from each project. My work involved UX demos, bug reporting, writing test cases, and performing regression testing. This experience taught me a lot about real-world software processes. It was a bit challenging to juggle it with university since it wasn’t during the official internship period — but I made it work.",
+    "I got the opportunity to work as a QA Intern at Calcey Technologies for a six-month internship. During that time, I worked on three different projects, guided by three amazing mentors from each project. My work involved UX demos, bug reporting, writing test cases, and performing regression testing. This experience taught me a lot about real-world software processes. It was a bit challenging to juggle it with university since it wasn't during the official internship period — but I made it work.",
     src: "rock.webp",
     link: "/calceyintern.webp",
     color: "#255496",
@@ -24,7 +24,7 @@ const projects = [
   {
     title: "Vice Chairwoman – IEEE WIE UoM",
     description:
-      " I'm currently the Vice Chairwoman of the IEEE WIE Affinity Group of UoM. Alongside academics and group projects, I've chaired events, coordinated and guided members, and mentored several projects as well. It’s been a rewarding experience that’s helped me grow as a leader while giving back to a community I care about.",
+      " I'm currently the Vice Chairwoman of the IEEE WIE Affinity Group of UoM. Alongside academics and group projects, I've chaired events, coordinated and guided members, and mentored several projects as well. It's been a rewarding experience that's helped me grow as a leader while giving back to a community I care about.",
     src: "water.jpg",
     link: "/wie.webp",
     color: "#071a38",
@@ -41,7 +41,7 @@ export default function MyHighlightsSection(): JSX.Element {
   <section id="highlights" className="pt-16">  <ReactLenis root>
       <SectionTitle title="My Highlights" />
 
-      <section className="text-white   w-full   ">
+      <section className="text-white w-full">
         {projects.map((project, i) => {
           const targetScale = 1 - (projects.length - i) * 0.05;
           return (
@@ -88,12 +88,14 @@ interface CardProps {
     offset: ["start end", "start start"],
   });
 
+  // Only apply scale transform on md screens and above
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
+
   const scale = useTransform(progress, range, [1, targetScale]);
 
   return (
     <section
-    id="highlights"  ref={container}
+    id="highlights" ref={container}
       className="h-screen flex items-center justify-center sticky top-0 px-4"
     >
       <motion.div
@@ -104,7 +106,7 @@ interface CardProps {
           backdropFilter: "blur(10px)",
           WebkitBackdropFilter: "blur(10px)",
         }}
-        className="flex flex-col relative -top-[25%] h-auto md:h-[450px] w-full md:w-[70%] rounded-xl p-6  md:p-10 origin-top border border-white/20 shadow-lg"
+        className="flex flex-col relative -top-[25%] h-auto md:h-[450px] w-full md:w-[70%] rounded-xl p-6 md:p-10 origin-top border border-white/20 shadow-lg"
       >
         <h2 className="text-2xl md:text-4xl text-center font-semibold mb-4 md:mb-0">
           {title}
@@ -113,8 +115,19 @@ interface CardProps {
         <div className="flex flex-col md:flex-row-reverse h-full mt-4 md:mt-5 gap-6 md:gap-10">
           {/* Image */}
           <div className="relative w-full md:w-[50%] h-[200px] md:h-full flex items-center justify-center">
+            {/* For mobile screens - no scale animation */}
+            <div className="block md:hidden relative w-full h-full">
+              <Image
+                src={url}
+                alt="image"
+                fill
+                className="object-contain rounded-lg"
+              />
+            </div>
+            
+            {/* For md screens and above - with scale animation */}
             <motion.div
-              className="relative w-full h-full"
+              className="hidden md:block relative w-full h-full"
               style={{ scale: imageScale }}
             >
               <Image
@@ -127,7 +140,7 @@ interface CardProps {
           </div>
 
           {/* Description */}
-          <div className="w-full md:w-[50%] text-justify text-base md:text-md lg:text-lg text-sm ">
+          <div className="w-full md:w-[50%] text-justify text-base md:text-md lg:text-lg text-sm">
             <p>{description}</p>
           </div>
         </div>
