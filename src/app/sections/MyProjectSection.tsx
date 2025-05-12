@@ -41,20 +41,20 @@ export default function MyProjectSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 h-full w-full z-10"
+            className="fixed inset-0  h-full w-full z-10"
           />
         )}
       </AnimatePresence>
       <AnimatePresence>
         {active && typeof active === "object" ? (
-          <div className="fixed inset-0 mt-10 grid place-items-center z-[100]">
+          <div className="fixed  inset-0 mt-10 grid place-items-center z-[100]">
   
             <motion.div
   layoutId={`card-${active.title}-${id}`}
   ref={ref}
   className="w-full max-w-[600px] h-full md:h-fit md:max-h-[90%] flex flex-col 
-             bg-white/5 dark:bg-white/10 backdrop-blur-md 
-             border border-white/30 shadow-lg 
+             bg-color2 dark:bg-white/10  
+             border border-white/30 
              sm:rounded-3xl overflow-hidden"
 >          <motion.button
               key={`button-${active.title}-${id}`}
@@ -89,7 +89,9 @@ export default function MyProjectSection() {
               </motion.div>
 
               <div>
+              
                 <div className="flex justify-between items-start p-4">
+                  
                   <div className="">
                     <motion.h3
                       layoutId={`title-${active.title}-${id}`}
@@ -97,6 +99,7 @@ export default function MyProjectSection() {
                     >
                       {active.title}
                     </motion.h3>
+                    
                     <motion.p
                       layoutId={`description-${active.description}-${id}`}
                       className="text-white dark:text-neutral-400 text-base"
@@ -119,6 +122,11 @@ export default function MyProjectSection() {
                   </motion.a>)}
                 </div>
                 <div className="pt-4 relative px-4">
+                    {active.tag && (
+  <span className="inline-block mb-2 self-start px-3 py-2 text-xs font-semibold rounded-full bg-white text-color3">
+    {active.tag}
+  </span>
+)}
                   <motion.div
                     layout
                     initial={{ opacity: 0 }}
@@ -138,21 +146,22 @@ export default function MyProjectSection() {
       </AnimatePresence>
 
       {/* Cards List */}
-      <ul className="max-w-4xl place-items-center mx-auto w-full grid grid-cols-1 md:grid-cols-3 items-start gap-4">
+  <ul className="max-w-4xl mt-32  place-items-center mx-auto w-full grid grid-cols-1 md:grid-cols-3 items-start gap-4">
   {cards.map((card) => (
     <motion.div
       layoutId={`card-${card.title}-${id}`}
       key={card.title}
-      onClick={() => setActive(card)}
-      className="p-4 flex flex-col border border-white mx-9 sm:mx-2 
+      className="p-4 flex flex-col  border border-white mx-9 sm:mx-2 
         hover:backdrop-blur-md hover:bg-white/5 dark:hover:bg-white/10 
         hover:shadow-lg hover:ring-1 hover:ring-white/40 
-        rounded-xl cursor-pointer transform hover:scale-105 
-        transition-all ease-in-out h-full"
+        rounded-xl transition-all ease-in-out h-full"
     >
       <div className="flex flex-col justify-between h-full">
         {/* Image */}
+      
+
         <motion.div layoutId={`image-${card.title}-${id}`}>
+          
           <Image
             width={100}
             height={100}
@@ -161,9 +170,15 @@ export default function MyProjectSection() {
             className="h-60 w-full rounded-lg object-cover object-top"
           />
         </motion.div>
+        
 
         {/* Title + Desc */}
         <div className="flex-grow flex flex-col justify-center items-center mt-4">
+{card.tag && (
+  <span className="inline-block mb-2 self-start px-3 py-1 text-xs font-semibold rounded-full bg-color3 text-white">
+    {card.tag}
+  </span>
+)}
           <motion.h3
             layoutId={`title-${card.title}-${id}`}
             className="font-medium text-white dark:text-neutral-200 text-center text-base"
@@ -178,20 +193,27 @@ export default function MyProjectSection() {
           </motion.p>
         </div>
 
-        {/* CTA Link */}
-        {card.ctaText && card.ctaLink && (
-  <div className="mt-4 flex justify-center">
-    <a
-      href={card.ctaLink}
-      target="_blank"
-      onClick={(e) => e.stopPropagation()}
-      className="px-4 py-2 text-sm rounded-sm width-fit font-bold bg-color1 text-white"
-    >
-      {card.ctaText}
-    </a>
-  </div>
-)}
+        {/* "More Info" Button */}
+        <div className="mt-4 flex justify-center gap-2">
+          <button
+            onClick={() => setActive(card)}
+            className="px-4 py-2 text-sm rounded-sm font-bold bg-white/10 text-white border border-white/30 cursor-pointer"
+          >
+            More Info
+          </button>
 
+          {/* CTA Link */}
+          {card.ctaText && card.ctaLink && (
+            <a
+              href={card.ctaLink}
+              target="_blank"
+              onClick={(e) => e.stopPropagation()}
+              className="px-4 py-2 text-sm rounded-sm font-bold bg-color1 text-white"
+            >
+              {card.ctaText}
+            </a>
+          )}
+        </div>
       </div>
     </motion.div>
   ))}
@@ -237,6 +259,8 @@ export const CloseIcon = () => {
 const cards = [
   {
     description: "NEXT JS, TAILWIND, ASCERNITY UI, UI-LAYOUT",
+        tag: "Personal Project", 
+
     title: "Portfolio 2.0",
     src: "/projects/portfolio2.webp",
     ctaText: "Visit Site",
@@ -250,7 +274,8 @@ const cards = [
     },
   },
   {
-    description: "PYTHON, TKINTER, SQLITE",
+    description: "PYTHON, TKINTER, SQLITE",    tag: "Client Project", // 👈 Add this line
+
     title: "UoM Internal Admin Tool",
     src: "/projects/finance.webp", // Update this with your actual image path
     ctaText: "",
@@ -267,7 +292,8 @@ const cards = [
   },
   
   {
-    description: "NEXT JS, TURBOPACK, PRISMA, TAILWIND",
+    description: "NEXT JS, TURBOPACK, PRISMA, TAILWIND",    tag: "Client Project", // 👈 Add this line
+
     title: "Vertextbms Site",
     src: "/projects/vertextbms.webp",
     ctaText: "Visit Site",
@@ -283,7 +309,8 @@ const cards = [
     },
   },
   {
-    description: "MERN STACK",
+    description: "MERN STACK",    tag: "Personal Project", // 👈 Add this line
+
     title: "Portfolio 1.0",
     src: "/projects/portfolio.webp",
     ctaText: "Visit Site",
@@ -297,7 +324,8 @@ const cards = [
     },
   },
   {
-    description: "FIREBASE, REACT.JS, ARDUINO IDE, ESP32, IOT",
+    description: "FIREBASE, REACT.JS, ARDUINO IDE, ESP32, IOT",    tag: "Group Project", // 👈 Add this line
+
     title: "BeeWise",
     src: "/projects/hardware.webp", // make sure to place the correct image at this path
     ctaText: "View Project in LinkedIn",
@@ -311,7 +339,25 @@ const cards = [
         </p>
       );
     },
-  }
+  },
+  {
+  description: "NEXT JS, TAILWIND, FIREBASE, CLERK",    tag: "Group Project", // 👈 Add this line
+
+  title: "DebateX",
+  src: "/projects/debatex.png", // Update with actual image path
+  ctaText: "Visit Site",
+  ctaLink: "https://debate-x-nrd5.vercel.app/",
+  content: () => {
+    return (
+      <p>
+        DebateX is a structured online debate platform built as a university project to modernize and streamline competitive debating. 
+        It features automated timekeeping, role-based views for organizers, judges, and debaters, real-time chat, note-taking, and session recording. 
+        Built with Next.js, Tailwind CSS, Firebase, Framer Motion, and Clerk, it ensures a seamless and fair debate experience with a modern UI and engaging UX.
+      </p>
+    );
+  },
+},
+
   
  
 ];
