@@ -64,7 +64,7 @@ const EducationSection: React.FC = () => {
 };
 const educationItems = [
   {
-    title: "BSc (Hons) in IT (CGPA:3.6)",
+    title: "BSc (Hons) in IT (CGPA:3.66)",
     description:
       "Currently a second year undergraduate of University of Moratuwa.",
     hexColor: "#9b691f", // green-500

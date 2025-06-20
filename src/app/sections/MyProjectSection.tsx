@@ -257,6 +257,21 @@ export const CloseIcon = () => {
 };
 
 const cards = [
+   {
+    description: "NEXT JS, TAILWIND",
+        tag: "Client Individual Project", 
+
+    title: "Hackelite 2.0 Competition Website",
+    src: "/projects/hackelite.png",
+    ctaText: "Visit Site",
+    ctaLink: "https://hackelite.ieeewieuom.lk/",
+    content: () => {
+      return (
+        <p>
+I created the HackElite 2.0 website for the IEEE WIE HackElite competition, providing a platform for university undergraduates from across Sri Lanka to register and participate. The site is designed to streamline the registration process and ensure a smooth experience for all participants, contributing to the overall success of the event.        </p>
+      );
+    },
+  },
   {
     description: "NEXT JS, TAILWIND, ASCERNITY UI, UI-LAYOUT",
         tag: "Personal Project", 
@@ -292,7 +307,7 @@ const cards = [
   },
   
   {
-    description: "NEXT JS, TURBOPACK, PRISMA, TAILWIND",    tag: "Client Project", // 👈 Add this line
+    description: "NEXT JS, TURBOPACK, PRISMA, TAILWIND",    tag: "Client Individual Project", // 👈 Add this line
 
     title: "Vertextbms Site",
     src: "/projects/vertextbms.webp",
