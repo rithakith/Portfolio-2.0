@@ -163,8 +163,8 @@ export default function MyProjectSection() {
         <motion.div layoutId={`image-${card.title}-${id}`}>
           
           <Image
-            width={100}
-            height={100}
+            width={600}
+            height={400}
             src={card.src}
             alt={card.title}
             className="h-60 w-full rounded-lg object-cover object-top"
@@ -257,6 +257,37 @@ export const CloseIcon = () => {
 };
 
 const cards = [
+  {
+    description: "ASP.NET Core, Flutter, PostgreSQL, AWS EC2, Mapbox, GitLab",
+        tag: "Software Project", 
+
+    title: "Land and Asset Valuation System",
+    src: "/projects/valuation.webp",
+    content: () => {
+      return (
+        <p>
+Built the application with a full-stack architecture using ASP.NET Core and
+Flutter. Integrated Mapbox for geospatial functionality and hosted the backend on AWS EC2
+with GitHub Actions-powered CI/CD pipeline</p>
+      );
+    },
+  },
+   {
+    description: "Tailwind, GitHub, NextJS, Vercel CI/CD",
+        tag: "Client Project", 
+
+    title: "ICITR- Official Website 2025",
+    src: "/projects/icitr.webp",
+    ctaText: "Visit Site",
+    ctaLink: "https://icitr.uom.lk/",
+    content: () => {
+      return (
+        <p>
+Currently developing the official website of the International Conference on
+Information Technology and Research for the year 2025</p>
+      );
+    },
+  },
    {
     description: "NEXT JS, TAILWIND",
         tag: "Client Individual Project", 
@@ -291,16 +322,16 @@ I created the HackElite 2.0 website for the IEEE WIE HackElite competition, prov
   {
     description: "PYTHON, TKINTER, SQLITE",    tag: "Client Project", // 👈 Add this line
 
-    title: "UoM Internal Admin Tool",
+    title: "UOM Finance Division Paysheet Emailer",
     src: "/projects/finance.webp", // Update this with your actual image path
     ctaText: "",
     ctaLink: "#", // Replace with actual link or modal trigger if available
     content: () => {
       return (
         <p>
-          This project was developed for an internal administration division at the University of Moratuwa by IES Labs, Faculty of IT.
-          Built using Python and Tkinter, it streamlined various admin processes with a user-friendly interface and SQLite database support.
-          I was glad to be one of the contributing team members in this collaborative effort.
+          Developed for the internal administration division at the University of
+Moratuwa by IES Labs, Faculty of IT. Built using Python and Tkinter, it streamlined various
+admin processes with a user-friendly interface and SQLite database support
         </p>
       );
     },
@@ -316,9 +347,11 @@ I created the HackElite 2.0 website for the IEEE WIE HackElite competition, prov
     content: () => {
       return (
         <p>
-          VertexBMS is a professional service provider specializing in MEP and industrial solutions.
-          The website reflects their focus on delivering efficient, reliable, and safe systems for homes,
-          offices, and industries — backed by 24/7 availability and a results-driven approach.
+         Built and deployed the site using a modern Next.js stack with Turbopack for
+fast builds and Tailwind CSS for UI. Handled backend integration with Prisma and added
+dynamic map features via Street Maps API. Developed custom forms for location-based
+interactions and user input.
+
         </p>
       );
     },
@@ -359,7 +392,7 @@ I created the HackElite 2.0 website for the IEEE WIE HackElite competition, prov
   description: "NEXT JS, TAILWIND, FIREBASE, CLERK",    tag: "Group Project", // 👈 Add this line
 
   title: "DebateX",
-  src: "/projects/debatex.png", // Update with actual image path
+  src: "/projects/debatex.webp", // Update with actual image path
   ctaText: "Visit Site",
   ctaLink: "https://debate-x-nrd5.vercel.app/",
   content: () => {
