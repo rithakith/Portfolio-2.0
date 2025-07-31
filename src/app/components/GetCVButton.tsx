@@ -9,7 +9,7 @@ const ButtonGetCv = () => {
 
   const handleClick = () => {
     window.open(
-      'https://drive.google.com/file/d/1mEE53YgRlxUknrK8KJMvqiier-Ne_1B9/view?usp=sharing',
+      'https://drive.google.com/file/d/1CX-P8eyGsABKbCGei747CXvKt7z7PYm3/view?usp=sharing',
       '_blank'
     )
   }
