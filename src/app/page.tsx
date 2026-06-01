@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import AboutMeContent from "./components/AboutMeContent";
@@ -30,6 +30,13 @@ interface MenuItem {
 export default function Home() {
   const [activeTab, setActiveTab] = useState<TabId>("overview");
   const containerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.scrollTop = 0;
+    }
+  }, [activeTab]);
 
   const menuItems: MenuItem[] = [
     { id: "overview", label: "Overview", icon: <User className="h-4 w-4" /> },
@@ -186,7 +193,10 @@ export default function Home() {
       </section>
 
       {/* 2. RIGHT PANEL: Content Viewport (Desktop) / Main Panel (Mobile) */}
-      <section className="relative z-10 flex-grow h-full overflow-y-auto p-5 md:p-10 lg:p-12 min-w-0">
+      <section 
+        ref={contentRef}
+        className="relative z-10 flex-grow h-0 md:h-full overflow-y-auto p-5 pb-24 md:p-10 lg:p-12 min-w-0"
+      >
         <div className="w-full max-w-5xl mx-auto min-h-full flex flex-col justify-center py-4">
           <AnimatePresence mode="wait">
             <motion.div
