@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
   output: "export",
   basePath: isProd ? "/Portfolio-2.0" : "",
   images: {
-    unoptimized: true,
+    loader: "custom",
+    loaderFile: "./src/app/image-loader.ts",
     domains: ['images.unsplash.com', 'assets.aceternity.com', 'cdn-images-1.medium.com', 'medium.com'],
   },
 };
