@@ -11,7 +11,7 @@ const blogData = [
 
     {
     title: 'From 1,500 Applicants to 28 Graduates: My Intense Yet Rewarding Calcey Springboard Scholarship Experience',
-    image: '/blogs/springboard.webp',
+    image: '/Portfolio-2.0/blogs/springboard.webp',
     link: 'https://medium.com/@ritharaedirisinghe/from-1-500-applicants-to-28-graduates-my-intense-yet-rewarding-calcey-springboard-scholarship-af577aecf1cf',
   },
 
@@ -54,33 +54,33 @@ const blogData = [
   },
   {
     title: 'Predicting the Next Character with RNN: A Simple Introduction Using Shakespeare’s Text',
-    image: '/blogs/rnn.webp',
+    image: '/Portfolio-2.0/blogs/rnn.webp',
     link: 'https://medium.com/@ritharaedirisinghe/predicting-the-next-character-with-rnn-a-simple-introduction-using-shakespeares-text-88e62550ac17',
   },
 
   {
     title: 'Exploring OAuth 2.0 : A Comprehensive Look at Authorization Grants',
-    image: '/blogs/grants.webp',
+    image: '/Portfolio-2.0/blogs/grants.webp',
     link: 'https://medium.com/@ritharaedirisinghe/exploring-oauth-2-0-a-comprehensive-look-at-authorization-grants-470aa46df0ef',
   },
   {
     title: 'Exploring OAuth 2.0 : A Guide to OAuth Roles and Protocol Flow',
-    image: '/blogs/protocol.webp',
+    image: '/Portfolio-2.0/blogs/protocol.webp',
     link: 'https://medium.com/@ritharaedirisinghe/securing-your-data-with-oauth-a-guide-to-oauth-roles-and-protocol-flow-d0c289dcdabb',
   },
   {
     title: 'Getting Started with OAuth 2.0: The Key to Safe, Controlled Access',
-    image: '/blogs/oauth.webp',
+    image: '/Portfolio-2.0/blogs/oauth.webp',
     link: 'https://medium.com/@ritharaedirisinghe/getting-started-with-oauth-2-0-the-key-to-safe-controlled-access-4f3b1a5c8d9e',
   },
     {
     title: 'Building the API Explorer Pipeline Backend',
-    image: '/blogs/pipeline_backend.png',
+    image: '/Portfolio-2.0/blogs/pipeline_backend.png',
     link: 'https://medium.com/@ritharaedirisinghe/building-the-api-explorer-pipeline-backend-3d4e775deebb',
   },
     {
     title: 'Building an API Explorer for API Dash — My Research & Planning Process',
-    image: '/blogs/research_planning.png',
+    image: '/Portfolio-2.0/blogs/research_planning.png',
     link: 'https://medium.com/@ritharaedirisinghe/building-an-api-explorer-for-api-dash-my-research-planning-process-3d16ef3c48f2',
   },
 ];
