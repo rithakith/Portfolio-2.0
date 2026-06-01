@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
 import GlobalSparkles from "./components/GlobalSparkles";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth h-screen overflow-hidden">
         <head>
         <Script
           id="clarity-analytics" 
@@ -41,10 +41,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}>
-        <Navbar />
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased relative h-screen overflow-hidden`}>
         <GlobalSparkles />
-        <main className="relative z-10">{children}</main>
+        <main className="relative z-10 h-full w-full">{children}</main>
       </body>
     </html>
   );

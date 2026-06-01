@@ -11,33 +11,33 @@ interface BlogCardProps {
 
 const BlogCard: React.FC<BlogCardProps> = ({ title, image, link }) => {
   return (
-    <div className='w-full  max-w-[400px] relative mt-4 h-[400px] group dark:bg-black  dark:border-0 border overflow-hidden rounded-md dark:text-white text-white'>
-      <figure className='w-full h-full rounded-md overflow-hidden'>
+    <div className='w-full max-w-[320px] relative h-[250px] group border border-white/10 overflow-hidden rounded-xl bg-white/[0.02] shadow-sm hover:border-white/20 transition-all duration-300'>
+      <figure className='w-full h-full overflow-hidden'>
         <Image
           src={image}
-          alt='blog'
-          width={600}
-          height={600}
-          className='h-full w-full scale-105 group-hover:scale-100 rounded-lg object-cover transition-all duration-300'
+          alt={title}
+          width={400}
+          height={300}
+          className='h-full w-full scale-105 group-hover:scale-110 rounded-xl object-cover transition-transform duration-500'
         />
       </figure>
-      <div className='absolute top-0 left-0 w-full h-full transition-all duration-300 bg-gradient-to-b from-[#00000025] via-[#0205cc5b] to-black'></div>
-      <article className='p-4 space-y-2 absolute bottom-0 md:-bottom-10 group-hover:bottom-0 transition-all duration-300'>
-        <h1 className='sm:text-2xl text-xl text-white font-semibold capitalize w-[90%]'>{title}</h1>
+      {/* Premium overlay gradient */}
+      <div className='absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-300'></div>
+      
+      {/* Content wrapper */}
+      <article className='p-4 absolute bottom-0 left-0 right-0 flex flex-col gap-2'>
+        <h3 className='text-xs font-semibold text-white tracking-tight line-clamp-2 leading-snug capitalize'>
+          {title}
+        </h3>
         <a
-  href={link}
-  className='sm:text-2xl  dark:text-white text-white font-normal 
-             opacity-100 sm:translate-y-0 
-             md:group-hover:opacity-100 md:opacity-0 
-             md:translate-y-2 md:group-hover:translate-y-0 
-             pt-2 pb-2 flex gap-1 transition-all duration-300 bg-color1 sm:bg-transparent px-4 sm:px-0 w-fit sm:w-full rounded-sm sm:rounded-0 '
->
-  Read Story
-  <span>
-    <ChevronsRight />
-  </span>
-</a>
-
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className='text-[11px] text-color1 hover:text-white font-semibold flex items-center gap-1 transition-colors duration-200 w-fit'
+        >
+          Read Story
+          <ChevronsRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+        </a>
       </article>
     </div>
   );

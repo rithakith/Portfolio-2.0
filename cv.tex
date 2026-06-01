@@ -1,0 +1,222 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[left=1.2cm, right=1.2cm, top=1.0cm, bottom=1.0cm]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{parskip}
+
+\definecolor{accentblue}{RGB}{30, 90, 180}
+
+\hypersetup{colorlinks=true, urlcolor=accentblue, linkcolor=accentblue}
+
+% Section formatting
+\titleformat{\section}{\color{accentblue}\large\bfseries}{}{0em}{}[\color{accentblue}\titlerule]
+\titlespacing{\section}{0pt}{5pt}{5pt}
+
+% Global list settings
+\setlist[itemize]{leftmargin=1.5em, itemsep=0pt, topsep=1pt, parsep=0pt, partopsep=0pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{empty}
+
+\newcommand{\cvitem}[2]{\textbf{#1} \hfill #2 \\[-2pt]}
+\newcommand{\projectsep}{\vspace{4pt}}
+
+% Project entry: {Title}{Date}{Client | Skills}{Description}
+\newcommand{\project}[4]{%
+  \noindent\textbf{#1} \hfill \textit{#2}\\[-2pt]
+  \noindent\textcolor{accentblue}{\textit{#3}}\\[1pt]
+  \noindent#4%
+}
+
+\begin{document}
+
+%-----------------------------------------------------------
+% HEADER
+%-----------------------------------------------------------
+\begin{center}
+  {\Huge\bfseries\color{accentblue} RITHARA KITHMANTHIE EDIRISINGHE}\\[3pt]
+  \small
+  \href{mailto:ritharaedirisinghe@gmail.com}{ritharaedirisinghe@gmail.com} $|$
+  +94 71 102 0853 $|$
+  Nugegoda, Western Sri Lanka \\[1pt]
+  \href{https://medium.com/@ritharaedirisinghe}{Medium} $|$
+  \href{https://linkedin.com/in/rithara-edirisinghe}{LinkedIn} $|$
+  \href{https://github.com/rithakith}{GitHub} $|$
+  \href{https://www.hackerrank.com/profile/ritharaedirisin}{Hackerrank} $|$
+  \href{https://rithara.dev}{Rithara.dev}
+\end{center}
+
+\vspace{1pt}
+
+%-----------------------------------------------------------
+% ABOUT ME
+%-----------------------------------------------------------
+\section{About Me}
+\vspace{2pt}
+A 3rd year IT undergraduate with hands-on experience across both sides of software delivery — having interned as a QA Engineer at Calcey Technologies and as a Software Engineer at WSO2. Has delivered 5+ real-world client projects while maintaining a CGPA of 3.59/4.0. Brings a strong sense of ownership, a habit of meeting deadlines, and a genuine care for code quality and collaboration.
+
+%-----------------------------------------------------------
+% PROFESSIONAL EXPERIENCE
+%-----------------------------------------------------------
+\section{Professional Experience}
+\vspace{2pt}
+
+\cvitem{Software Engineering Intern --- WSO2}{February 2026 -- August 2026}
+\textit{Colombo, Sri Lanka}\\[1pt]
+Building a Backstage plugin that enables WSO2 API Manager integration for Internal Developer Portals, allowing organizations to use WSO2 API Manager as the underlying API platform within Backstage.
+\begin{itemize}
+  \item Developed and scaffolded the plugin architecture using React and TypeScript, integrating WSO2 API Manager via REST APIs and OpenAPI Specification
+  \item Delivering the plugin as a publishable npm package by end of internship
+\end{itemize}
+\textit{\color{accentblue}Skills: Backstage, React, TypeScript, WSO2 API Manager, REST APIs, OpenAPI, OAuth2/OIDC, Docker}
+
+\vspace{4pt}
+\cvitem{Quality Assurance Intern --- Calcey Technologies}{May 2024 -- November 2024}
+\textit{Colombo, Sri Lanka}\\[1pt]
+Contributed to QA workflows across 3 projects, writing regression and system suite test cases, performing manual and UI/UX testing, and tracking bugs through the full resolution cycle.
+
+%-----------------------------------------------------------
+% EDUCATION
+%-----------------------------------------------------------
+\section{Education}
+\vspace{2pt}
+
+\cvitem{B.Sc. (Hons) in Information Technology}{2023 -- 2027 (Expected)}
+\textit{University of Moratuwa, Faculty of Information Technology} \hfill \textit{CGPA (5 semesters): 3.59/4.0}
+
+\vspace{3pt}
+\cvitem{GCE Advanced Level --- Physical Science Stream}{2020 -- 2022}
+\textit{Visakha Vidyalaya} \hfill \textit{Z-Score: 1.916} \\[-2pt]
+{\small Combined Mathematics (A), Physics (A), Chemistry (A)}
+
+%-----------------------------------------------------------
+% TECHNICAL SKILLS
+%-----------------------------------------------------------
+\section{Technical Skills}
+\vspace{2pt}
+
+\begin{tabularx}{\textwidth}{@{} l X @{}}
+  \textbf{Languages}       & C, C\#, Java, Python, PHP, TypeScript \\[1pt]
+  \textbf{Web \& Mobile}   & React, NextJS, Angular, Flutter, React Native, ASP.NET Core, Tkinter, FastAPI \\[1pt]
+  \textbf{Databases \& ORMs} & MySQL, PostgreSQL, MongoDB, SQLite, Prisma, Firebase \\[1pt]
+  \textbf{DevOps \& Cloud} & Choreo, Git, GitHub, GitLab, Docker, Nginx, Linux, Ubuntu, AWS, Vercel \\[1pt]
+  \textbf{Data Science \& ML} & NumPy, Pandas, Scikit-Learn, Google Colab, Kaggle \\[1pt]
+  \textbf{Tools}           & Postman, Swagger, Figma, Canva \\
+\end{tabularx}
+
+%-----------------------------------------------------------
+% KEY PROJECTS
+%-----------------------------------------------------------
+\section{Key Projects}
+\vspace{2pt}
+
+\project{Land \& Asset Valuation System}{September 2024 -- July 2025}%
+{Client: Epic Lanka \quad|\quad ASP.NET Core, Flutter, PostgreSQL, AWS EC2, Mapbox, GitLab}%
+{Developed a property valuation system for Sri Lanka's Valuation Department, digitizing land acquisition, tax, and rating workflows with mobile GIS mapping, evidence-based valuation tools, multi-language support, and automated reporting.
+\hfill \href{https://github.com}{[View More]}}
+
+\projectsep
+\project{WSO2 DevOps Engineering Program --- Group Project}{2025 -- 2026}%
+{ \quad|\quad Terraform, Kubernetes, Kubespray, ArgoCD, Istio, Kiali, Jaeger, AWS, Linux}%
+{ Built and deployed a production-grade microservices Salon Booking System on a self-provisioned Kubernetes cluster with AWS.}
+\begin{itemize}
+  \item Provisioned AWS infrastructure (VPC, EC2, ECR, IAM) using Terraform; bootstrapped Kubernetes with Kubespray
+  \item Set up ArgoCD for GitOps-based CD; configured Istio service mesh with Kiali and Jaeger for observability
+\end{itemize}
+\hfill \href{https://medium.com/@ritharaedirisinghe/my-journey-through-the-wso2-linux-systems-administration-devops-engineering-training-f15e22af9246}{[Read on Medium]} \quad \href{https://github.com/orgs/WSO2-G02/repositories}{[View GitHub Org]}
+
+\projectsep
+\project{Logdy-Core-RK --- Open Source Contribution}{Ongoing}%
+{Go, Open Source, Developer Tooling}%
+{Personal fork of \href{https://logdy.dev}{Logdy} incorporating improvements based on community feedback and personal development experience, contributing enhancements back to the open-source ecosystem.
+\hfill \href{https://github.com/rithakith/logdy-core-rk}{[View GitHub]}}
+
+\projectsep
+\project{Secura --- 2nd Place, Hacktivate}{August 2025}%
+{FastAPI, NextJS, TypeScript, Firebase/Firestore, Gemini AI, WebSocket}%
+{Built an AI-powered incident reporting platform with intelligent threat analysis, real-time collaboration, automated compliance reporting, role-based dashboards, predictive analytics, and secure evidence management.\hfill\mbox{\href{https://github.com/rithakith}{[View GitHub]}}}
+
+\projectsep
+\project{University of Moratuwa Finance Division Paysheet Emailer}{October 2024 -- March 2025}%
+{Client: UOM Administrative Division \quad|\quad Python, Tkinter, SQLite}%
+{Developed for UOM's internal administration division by IES Labs, Faculty of IT. Streamlined admin processes with a user-friendly interface and SQLite database support.
+\hfill \href{https://github.com}{[View More]}}
+
+\projectsep
+\project{VertexBMS Official Website}{2024}%
+{Client: VertexBMS \quad|\quad NextJS, Turbopack, Tailwind CSS, Prisma, Street Maps API, GitLab}%
+{Built and deployed using NextJS with Turbopack, handling backend integration via Prisma and dynamic map features via Street Maps API.
+\hfill \href{https://vertexbms.com}{[View Site]}}
+
+\projectsep
+\project{HackElite 2.0 Competition Website}{2024}%
+{Client: IEEE WIE Student Branch \quad|\quad NextJS, Tailwind, Vercel CI/CD}%
+{Developed the HackElite 2.0 event website for registration and participation by university students across Sri Lanka.
+
+\hfill \href{https://hackelite.lk}{[View Site]}}
+
+\projectsep
+\project{ICITR Official Website 2025}{2025}%
+{Client: ICITR \quad|\quad NextJS, Tailwind, Vercel CI/CD}%
+{Developed the official website for the International Conference on Information Technology and Research 2025, covering registration, paper submissions, schedules, and speaker details.
+\hfill \href{https://icitr.uom.lk}{[View Site]}}
+
+%-----------------------------------------------------------
+% ACHIEVEMENTS & AWARDS
+%-----------------------------------------------------------
+\section{Achievements \& Awards}
+\vspace{2pt}
+
+\begin{itemize}
+  \item \textbf{2nd Place --- Hacktivate} organized by NSBM Green University
+  \item \textbf{2nd Place --- DataStorm 5.0} organized by Octave --- multi-round analytics competition covering supervised and unsupervised learning and LLM-based model development
+  \item \textbf{Top 10 Finalist --- Ballerina 2.0} organized by WSO2
+  \item \textbf{13th Place --- Ballerina 1.0} organized by WSO2
+\end{itemize}
+
+%-----------------------------------------------------------
+% CERTIFICATIONS
+%-----------------------------------------------------------
+\section{Certifications}
+\vspace{2pt}
+
+\begin{itemize}
+  \item \textbf{AWS Certified Cloud Practitioner} --- Amazon Web Services \hfill \href{https://aws.amazon.com}{Verify Credential}
+  \item \textbf{Security, Compliance, and Identity Fundamentals (SC-900)} --- Microsoft \hfill \href{https://microsoft.com}{Verify Credential}
+  \item \textbf{Azure Fundamentals (AZ-900)} --- Microsoft \hfill \href{https://microsoft.com}{Verify Credential}
+  \item \textbf{CS50's Introduction to Computer Science} --- Harvard University \hfill \href{https://cs50.harvard.edu}{Verify Credential}
+\end{itemize}
+
+%-----------------------------------------------------------
+% VOLUNTEERING
+%-----------------------------------------------------------
+\section{Volunteering Experience}
+\vspace{2pt}
+
+\textbf{IEEE WIE Student Branch, University of Moratuwa}\\[-2pt]
+\begin{itemize}
+  \item Vice Chairwoman \hfill Term 24/25
+  \item Festx 5.0 --- Chairperson \hfill Term 23/24
+\end{itemize}
+
+%-----------------------------------------------------------
+% REFEREES
+%-----------------------------------------------------------
+\section{Referees}
+\vspace{2pt}
+
+\begin{tabularx}{\textwidth}{XXX}
+\textbf{Tharika Madurapperuma} & \textbf{Dr Saminda Premaratne} & \textbf{Upeksha Sandamini} \\
+Technical Lead, WSO2 & Senior Lecturer, Faculty of IT & Associate Software QA Lead \\
+\href{mailto:tharika@wso2.com}{tharika@wso2.com} & University of Moratuwa & Calcey Technologies \\
+ & +94 71 441 3362 & +94 76 809 8478 \\
+ & \href{mailto:samindap@uom.lk}{samindap@uom.lk} & \href{mailto:upeksha@calcey.com}{upeksha@calcey.com} \\
+\end{tabularx}
+
+\end{document}

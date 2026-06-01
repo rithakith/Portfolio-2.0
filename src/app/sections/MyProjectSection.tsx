@@ -2,20 +2,30 @@
 import Image from "next/image";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import SectionTitle from "../components/SectionTitle";
 import { useOutsideClick } from "@/hooks/use-outside-click";
+
+type ProjectCategory = "All" | "Web & Mobile" | "DevOps & Cloud" | "Systems & AI";
 
 export default function MyProjectSection() {
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
     null
   );
+  const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("All");
+  const [isMobile, setIsMobile] = useState(false);
   const id = useId();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        setActive(false);
+        setActive(null);
       }
     }
 
@@ -31,194 +41,241 @@ export default function MyProjectSection() {
 
   useOutsideClick(ref, () => setActive(null));
 
+  const filteredCards = cards.filter(
+    (card) => selectedCategory === "All" || card.category === selectedCategory
+  );
+
   return (
-    <section id="projects" className="pt-16">
-      <SectionTitle title="My Projects" />
+    <section id="projects" className="w-full px-2 py-4 flex flex-col gap-6 max-w-6xl mx-auto">
+      {/* Category Filter Buttons */}
+      <div className="flex flex-wrap justify-center gap-3 mt-4 mb-4 px-4">
+        {(["All", "Web & Mobile", "DevOps & Cloud", "Systems & AI"] as ProjectCategory[]).map((category) => (
+          <button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            className={`px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 border ${
+              selectedCategory === category
+                ? "bg-color1 text-white border-color1 shadow-md"
+                : "bg-white/5 text-gray-300 border-white/10 hover:bg-white/10 hover:text-white"
+            }`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
   
       <AnimatePresence>
         {active && typeof active === "object" && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0  h-full w-full z-10"
-          />
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {active && typeof active === "object" ? (
-          <div className="fixed  inset-0 mt-10 grid place-items-center z-[100]">
-  
+          <>
+            {/* Background Overlay */}
             <motion.div
-  layoutId={`card-${active.title}-${id}`}
-  ref={ref}
-  className="w-full max-w-[600px] h-full md:h-fit md:max-h-[90%] flex flex-col 
-             bg-color2 dark:bg-white/10  
-             border border-white/30 
-             sm:rounded-3xl overflow-hidden"
->          <motion.button
-              key={`button-${active.title}-${id}`}
-              layout
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              exit={{
-                opacity: 0,
-                transition: {
-                  duration: 0.05,
-                },
-              }}
-              className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-color1 rounded-full h-6 w-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={() => setActive(null)}
-            >
-              <CloseIcon />
-            </motion.button>
+              className="fixed inset-0 h-full w-full z-[90] bg-black/60 backdrop-blur-sm cursor-pointer"
+            />
 
-              <motion.div layoutId={`image-${active.title}-${id}`}>
+            {/* Responsive Side-Drawer / Bottom-Sheet */}
+            <motion.div
+              initial={isMobile ? { y: "100%", x: 0 } : { x: "100%", y: 0 }}
+              animate={{ x: 0, y: 0 }}
+              exit={isMobile ? { y: "100%", x: 0 } : { x: "100%", y: 0 }}
+              transition={{ type: "spring", damping: 30, stiffness: 300 }}
+              ref={ref}
+              className="fixed z-[100] bg-neutral-950/90 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col
+                md:top-0 md:right-0 md:h-full md:w-[480px] md:border-y-0 md:border-r-0 md:border-l md:rounded-l-3xl
+                max-md:bottom-0 max-md:left-0 max-md:w-full max-md:h-[82vh] max-md:border-x-0 max-md:border-b-0 max-md:border-t max-md:rounded-t-3xl"
+            >
+              {/* Grab handle for mobile touch experience */}
+              <div className="w-12 h-1 bg-white/20 rounded-full mx-auto my-3 md:hidden flex-shrink-0" />
+
+              {/* Visual Header */}
+              <div className="relative h-48 md:h-64 w-full flex-shrink-0">
                 <Image
                   priority
-                  width={200}
-                  height={200}
+                  width={600}
+                  height={400}
                   src={active.src}
                   alt={active.title}
-                  className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
+                  className="w-full h-full object-cover object-top"
                 />
-              </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
+                
+                <button
+                  className="flex absolute top-4 right-4 items-center justify-center bg-black/60 hover:bg-black/80 text-white rounded-full h-9 w-9 transition-colors duration-200 border border-white/10 shadow-md cursor-pointer hover:scale-105 active:scale-95"
+                  onClick={() => setActive(null)}
+                >
+                  <CloseIcon />
+                </button>
+              </div>
 
-              <div>
-              
-                <div className="flex justify-between items-start p-4">
-                  
-                  <div className="">
-                    <motion.h3
-                      layoutId={`title-${active.title}-${id}`}
-                      className="font-medium text-white dark:text-neutral-200 text-base"
-                    >
-                      {active.title}
-                    </motion.h3>
-                    
-                    <motion.p
-                      layoutId={`description-${active.description}-${id}`}
-                      className="text-white dark:text-neutral-400 text-base"
-                    >
-                      {active.description}
-                    </motion.p>
-                  </div>
-                  {active.ctaText && active.ctaLink && (
-
-                  <motion.a
-                    layout
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    href={active.ctaLink}
-                    target="_blank"
-                    className="px-4 py-3 text-sm rounded-full font-bold bg-color1 text-white"
-                  >
-                    {active.ctaText}
-                  </motion.a>)}
+              {/* Drawer Body Content */}
+              <div className="flex-1 overflow-y-auto px-6 py-5 flex flex-col gap-5">
+                <div className="flex flex-col gap-2">
+                  {active.tag && (
+                    <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-color1/10 text-color1 border border-color1/25 w-fit">
+                      {active.tag}
+                    </span>
+                  )}
+                  <h3 className="font-bold text-white text-xl md:text-2xl tracking-tight">
+                    {active.title}
+                  </h3>
                 </div>
-                <div className="pt-4 relative px-4">
-                    {active.tag && (
-  <span className="inline-block mb-2 self-start px-3 py-2 text-xs font-semibold rounded-full bg-white text-color3">
-    {active.tag}
-  </span>
-)}
-                  <motion.div
-                    layout
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="text-color1 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
-                  >
-                    {typeof active.content === "function"
-                      ? active.content()
-                      : active.content}
-                  </motion.div>
+
+                {/* Technologies Stack parsed into modern micro-badges */}
+                {active.description && (
+                  <div className="flex flex-col gap-2 border-y border-white/5 py-4">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-gray-500">Technologies Used</span>
+                    <div className="flex flex-wrap gap-2">
+                      {active.description.split(",").map((tech) => (
+                        <span
+                          key={tech.trim()}
+                          className="px-2.5 py-1 text-xs font-medium bg-white/[0.04] text-gray-300 border border-white/10 rounded-md hover:border-white/20 hover:text-white transition-colors"
+                        >
+                          {tech.trim()}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Project Content / Description */}
+                <div className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
+                  {typeof active.content === "function"
+                    ? active.content()
+                    : active.content}
                 </div>
               </div>
+
+              {/* Sticky Action Footer */}
+              {active.ctaText && active.ctaLink && (
+                <div className="p-6 border-t border-white/15 bg-neutral-950/40 backdrop-blur-md flex justify-end gap-3 flex-shrink-0 pb-safe">
+                  <a
+                    href={active.ctaLink}
+                    target="_blank"
+                    className="px-5 py-2.5 text-xs rounded-xl font-bold bg-color1 text-white hover:bg-opacity-95 shadow-md shadow-color1/10 active:scale-[0.98] transition-all duration-200 cursor-pointer flex items-center gap-1.5"
+                  >
+                    <span>{active.ctaText}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
+                      <path fillRule="evenodd" d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h4a.75.75 0 0 1 0 1.5h-4Z" clipRule="evenodd" />
+                      <path fillRule="evenodd" d="M12.5 2.25A.75.75 0 0 1 13.25 2h5c.414 0 .75.336.75.75v5a.75.75 0 0 1-1.5 0V3.81L11.78 9.53a.75.75 0 1 1-1.06-1.06L16.44 2.75H13.25a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
+                    </svg>
+                  </a>
+                </div>
+              )}
             </motion.div>
-          </div>
-        ) : null}
+          </>
+        )}
       </AnimatePresence>
 
       {/* Cards List */}
-  <ul className="max-w-4xl mt-32  place-items-center mx-auto w-full grid grid-cols-1 md:grid-cols-3 items-start gap-4">
-  {cards.map((card) => (
-    <motion.div
-      layoutId={`card-${card.title}-${id}`}
-      key={card.title}
-      className="p-4 flex flex-col  border border-white mx-9 sm:mx-2 
-        hover:backdrop-blur-md hover:bg-white/5 dark:hover:bg-white/10 
-        hover:shadow-lg hover:ring-1 hover:ring-white/40 
-        rounded-xl transition-all ease-in-out h-full"
-    >
-      <div className="flex flex-col justify-between h-full">
-        {/* Image */}
-      
-
-        <motion.div layoutId={`image-${card.title}-${id}`}>
-          
-          <Image
-            width={600}
-            height={400}
-            src={card.src}
-            alt={card.title}
-            className="h-60 w-full rounded-lg object-cover object-top"
-          />
-        </motion.div>
-        
-
-        {/* Title + Desc */}
-        <div className="flex-grow flex flex-col justify-center items-center mt-4">
-{card.tag && (
-  <span className="inline-block mb-2 self-start px-3 py-1 text-xs font-semibold rounded-full bg-color3 text-white">
-    {card.tag}
-  </span>
-)}
-          <motion.h3
-            layoutId={`title-${card.title}-${id}`}
-            className="font-medium text-white dark:text-neutral-200 text-center text-base"
-          >
-            {card.title}
-          </motion.h3>
-          <motion.p
-            layoutId={`description-${card.description}-${id}`}
-            className="text-color1 dark:text-neutral-400 text-center text-base"
-          >
-            {card.description}
-          </motion.p>
-        </div>
-
-        {/* "More Info" Button */}
-        <div className="mt-4 flex justify-center gap-2">
-          <button
-            onClick={() => setActive(card)}
-            className="px-4 py-2 text-sm rounded-sm font-bold bg-white/10 text-white border border-white/30 cursor-pointer"
-          >
-            More Info
-          </button>
-
-          {/* CTA Link */}
-          {card.ctaText && card.ctaLink && (
-            <a
-              href={card.ctaLink}
-              target="_blank"
-              onClick={(e) => e.stopPropagation()}
-              className="px-4 py-2 text-sm rounded-sm font-bold bg-color1 text-white"
+      <motion.ul 
+        layout
+        className="max-w-6xl mt-2 px-4 place-items-center mx-auto w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch gap-6"
+      >
+        <AnimatePresence mode="popLayout">
+          {filteredCards.map((card) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+              layoutId={`card-${card.title}-${id}`}
+              key={card.title}
+              className="p-4 flex flex-col border border-white/10 bg-white/[0.02] dark:bg-white/[0.04] backdrop-blur-md
+                hover:border-white/20 hover:bg-white/[0.05]
+                rounded-xl transition-all duration-300 h-full shadow-sm hover:shadow-md"
             >
-              {card.ctaText}
-            </a>
-          )}
-        </div>
-      </div>
-    </motion.div>
-  ))}
-</ul>
+              <div className="flex flex-col justify-between h-full gap-4">
+                {/* Image */}
+                <motion.div layoutId={`image-${card.title}-${id}`} className="relative h-48 w-full rounded-lg overflow-hidden">
+                  <Image
+                    width={600}
+                    height={400}
+                    src={card.src}
+                    alt={card.title}
+                    className="h-full w-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                  />
+                </motion.div>
 
+                {/* Title + Desc */}
+                <div className="flex-grow flex flex-col justify-start items-start">
+                  {card.tag && (
+                    <span className="inline-block mb-2 px-2.5 py-0.5 text-xs font-semibold rounded-full bg-color1/10 text-color1 border border-color1/25">
+                      {card.tag}
+                    </span>
+                  )}
+                  <motion.h3
+                    layoutId={`title-${card.title}-${id}`}
+                    className="font-semibold text-white dark:text-neutral-200 text-lg"
+                  >
+                    {card.title}
+                  </motion.h3>
+                  <motion.p
+                    layoutId={`description-${card.description}-${id}`}
+                    className="text-gray-400 text-xs mt-1.5"
+                  >
+                    {card.description}
+                  </motion.p>
+                </div>
+
+                {/* Buttons */}
+                <div className="mt-auto pt-2 flex justify-start gap-2">
+                  <button
+                    onClick={() => setActive(card)}
+                    className="group/btn relative px-4 py-1.5 text-xs rounded-lg font-medium bg-white/[0.03] hover:bg-white/[0.08] text-gray-200 hover:text-white border border-white/10 hover:border-color1/40 transition-all duration-300 flex items-center gap-1.5 shadow-sm hover:shadow-[0_0_12px_rgba(226,88,62,0.15)] active:scale-95 cursor-pointer"
+                  >
+                    <span>Details</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className="w-3.5 h-3.5 text-gray-400 group-hover/btn:text-color1 group-hover/btn:translate-x-0.5 transition-all duration-300"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.22 5.08a.75.75 0 1 1 1.06-1.06l5.5 5.5a.75.75 0 0 1 0 1.06l-5.5 5.5a.75.75 0 1 1-1.06-1.06l4.168-4.17H3.75A.75.75 0 0 1 3 10Z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* CTA Link */}
+                  {card.ctaText && card.ctaLink && (
+                    <a
+                      href={card.ctaLink}
+                      target="_blank"
+                      onClick={(e) => e.stopPropagation()}
+                      className="px-4 py-1.5 text-xs rounded-lg font-medium bg-color2 hover:bg-opacity-95 hover:shadow-[0_0_12px_rgba(29,122,92,0.2)] hover:scale-[1.02] active:scale-[0.98] text-white transition-all duration-300 cursor-pointer flex items-center gap-1"
+                    >
+                      <span>{card.ctaText}</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="w-3 h-3 text-white/80"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h4a.75.75 0 0 1 0 1.5h-4Z"
+                          clipRule="evenodd"
+                        />
+                        <path
+                          fillRule="evenodd"
+                          d="M12.5 2.25A.75.75 0 0 1 13.25 2h5c.414 0 .75.336.75.75v5a.75.75 0 0 1-1.5 0V3.81L11.78 9.53a.75.75 0 1 1-1.06-1.06L16.44 2.75H13.25a.75.75 0 0 1-.75-.75Z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.ul>
     </section>
   );
 }
@@ -226,28 +283,16 @@ export default function MyProjectSection() {
 export const CloseIcon = () => {
   return (
     <motion.svg
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: 0.05,
-        },
-      }}
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width="20"
+      height="20"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="h-4 w-4 text-black"
+      className="h-4 w-4 text-white"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M18 6l-12 12" />
@@ -258,154 +303,127 @@ export const CloseIcon = () => {
 
 const cards = [
   {
+    title: "Land & Asset Valuation System",
+    category: "Web & Mobile" as ProjectCategory,
+    tag: "Client Project (Epic Lanka)",
     description: "ASP.NET Core, Flutter, PostgreSQL, AWS EC2, Mapbox, GitLab",
-        tag: "Software Project", 
-
-    title: "Land and Asset Valuation System",
     src: "/projects/valuation.webp",
-    content: () => {
-      return (
-        <p>
-Built the application with a full-stack architecture using ASP.NET Core and
-Flutter. Integrated Mapbox for geospatial functionality and hosted the backend on AWS EC2
-with GitHub Actions-powered CI/CD pipeline</p>
-      );
-    },
-  },
-   {
-    description: "Tailwind, GitHub, NextJS, Vercel CI/CD",
-        tag: "Client Project", 
-
-    title: "ICITR- Official Website 2025",
-    src: "/projects/icitr.webp",
-    ctaText: "Visit Site",
-    ctaLink: "https://icitr.uom.lk/",
-    content: () => {
-      return (
-        <p>
-Currently developing the official website of the International Conference on
-Information Technology and Research for the year 2025</p>
-      );
-    },
-  },
-   {
-    description: "NEXT JS, TAILWIND",
-        tag: "Client Individual Project", 
-
-    title: "Hackelite 2.0 Competition Website",
-    src: "/projects/hackelite.png",
-    ctaText: "Visit Site",
-    ctaLink: "https://hackelite.ieeewieuom.lk/",
-    content: () => {
-      return (
-        <p>
-I created the HackElite 2.0 website for the IEEE WIE HackElite competition, providing a platform for university undergraduates from across Sri Lanka to register and participate. The site is designed to streamline the registration process and ensure a smooth experience for all participants, contributing to the overall success of the event.        </p>
-      );
-    },
+    content: () => (
+      <p>
+        Developed a highly secure property valuation system for Sri Lanka&apos;s Valuation Department. 
+        Digitized crucial land acquisition, rating, and tax workflows. Built with a full-stack architecture 
+        using ASP.NET Core and Flutter, integrating Mapbox for geospatial mobile mapping, automated reporting 
+        tools, and robust multi-language support. Hosted the backend on AWS EC2.
+      </p>
+    ),
   },
   {
-    description: "NEXT JS, TAILWIND, ASCERNITY UI, UI-LAYOUT",
-        tag: "Personal Project", 
-
-    title: "Portfolio 2.0",
-    src: "/projects/portfolio2.webp",
-    ctaText: "Visit Site",
-    ctaLink: "http://rithara.dev/",
-    content: () => {
-      return (
-        <p>
-          As an aspiring developer, I have designed and developed a dynamic showcase of my skills and projects, reflecting my passion for technology and user experience. This portfolio not only highlights my work but also features an integrated AI chatbot, enhancing user interaction and providing personalized assistance.
-        </p>
-      );
-    },
+    title: "WSO2 DevOps Program Group Project",
+    category: "DevOps & Cloud" as ProjectCategory,
+    tag: "DevOps / Infrastructure Project",
+    description: "Terraform, Kubernetes, ArgoCD, Istio, Jaeger, AWS, Linux",
+    src: "/wso2.webp",
+    ctaText: "Read on Medium",
+    ctaLink: "https://medium.com/@ritharaedirisinghe/my-journey-through-the-wso2-linux-systems-administration-devops-engineering-training-f15e22af9246",
+    content: () => (
+      <p>
+        Built and deployed a production-grade microservices-based Salon Booking System on a self-provisioned 
+        Kubernetes cluster using bootstrapped Kubespray. Used Terraform to provision secure AWS infrastructure 
+        (VPC, EC2, ECR, IAM). Configured GitOps CD pipelines using ArgoCD, and enforced service mesh 
+        observability and routing policies using Istio, Kiali, Jaeger, and Prometheus.
+      </p>
+    ),
   },
   {
-    description: "PYTHON, TKINTER, SQLITE",    tag: "Client Project", // 👈 Add this line
-
-    title: "UOM Finance Division Paysheet Emailer",
-    src: "/projects/finance.webp", // Update this with your actual image path
-    ctaText: "",
-    ctaLink: "#", // Replace with actual link or modal trigger if available
-    content: () => {
-      return (
-        <p>
-          Developed for the internal administration division at the University of
-Moratuwa by IES Labs, Faculty of IT. Built using Python and Tkinter, it streamlined various
-admin processes with a user-friendly interface and SQLite database support
-        </p>
-      );
-    },
+    title: "Secura",
+    category: "Systems & AI" as ProjectCategory,
+    tag: "2nd Place - Hacktivate Hackathon",
+    description: "FastAPI, NextJS, Firebase Firestore, Gemini AI, WebSockets",
+    src: "/projects/debatex.webp",
+    ctaText: "View GitHub",
+    ctaLink: "https://github.com/rithakith",
+    content: () => (
+      <p>
+        Co-developed an AI-powered incident reporting platform built for high-stakes real-time security tracking. 
+        Integrates Gemini AI for intelligent threat analysis, WebSockets for live, secure collaboration dashboards, 
+        and secure media/evidence uploads to Firebase. Built custom automated compliance reports and analytics.
+      </p>
+    ),
   },
-  
   {
-    description: "NEXT JS, TURBOPACK, PRISMA, TAILWIND",    tag: "Client Individual Project", // 👈 Add this line
-
-    title: "Vertextbms Site",
+    title: "Logdy-Core-RK",
+    category: "Systems & AI" as ProjectCategory,
+    tag: "Open Source Contribution",
+    description: "Go, Open Source, Developer Tooling, JSON logs stream",
+    src: "/projects/logdy-rk.png",
+    ctaText: "View GitHub",
+    ctaLink: "https://github.com/rithakith/logdy-core-rk",
+    content: () => (
+      <p>
+        Developed and maintained a personal custom fork of Logdy, a web-based real-time log viewer and terminal UI developer tool. 
+        Optimized performance in the core Go log-streaming engine, adding improved support for custom regex filters, community requested enhancements, and contributing upstream patches back to the main repository.
+      </p>
+    ),
+  },
+  {
+    title: "UOM Finance Paysheet Emailer",
+    category: "Web & Mobile" as ProjectCategory,
+    tag: "Client Project (UOM Admin)",
+    description: "Python, Tkinter, SQLite, SMTP Mail Client",
+    src: "/projects/finance.webp",
+    content: () => (
+      <p>
+        Streamlined administrative payroll operations by creating a standalone desktop automation client for the University of Moratuwa Internal Administration Division. 
+        Developed with a clean Tkinter GUI, utilizing SQLite for pay database management, and implementing secure multithreaded email delivery of encrypted paysheet PDFs.
+      </p>
+    ),
+  },
+  {
+    title: "VertexBMS Official Website",
+    category: "Web & Mobile" as ProjectCategory,
+    tag: "Client Individual Project",
+    description: "NextJS, Turbopack, Tailwind CSS, Prisma, Street Maps API",
     src: "/projects/vertextbms.webp",
     ctaText: "Visit Site",
     ctaLink: "https://vertexbms.com/",
-    content: () => {
-      return (
-        <p>
-         Built and deployed the site using a modern Next.js stack with Turbopack for
-fast builds and Tailwind CSS for UI. Handled backend integration with Prisma and added
-dynamic map features via Street Maps API. Developed custom forms for location-based
-interactions and user input.
-
-        </p>
-      );
-    },
-  },
-  {
-    description: "MERN STACK",    tag: "Personal Project", // 👈 Add this line
-
-    title: "Portfolio 1.0",
-    src: "/projects/portfolio.webp",
-    ctaText: "Visit Site",
-    ctaLink: "https://ritharakithmanthie.vercel.app/",
-    content: () => {
-      return (
-        <p>
-          As an aspiring developer, I have designed and developed a dynamic showcase of my skills and projects, reflecting my passion for technology and user experience. This portfolio not only highlights my work but also features an integrated AI chatbot, enhancing user interaction and providing personalized assistance.
-        </p>
-      );
-    },
-  },
-  {
-    description: "FIREBASE, REACT.JS, ARDUINO IDE, ESP32, IOT",    tag: "Group Project", // 👈 Add this line
-
-    title: "BeeWise",
-    src: "/projects/hardware.webp", // make sure to place the correct image at this path
-    ctaText: "View Project in LinkedIn",
-    ctaLink: "https://www.linkedin.com/in/ritharak/details/projects/", // replace with the actual deployed URL if available
-    content: () => {
-      return (
-        <p>
-          BeeWise is an advanced IoT solution transforming beekeeping with real-time monitoring and automation. 
-          I developed the web application for this system using React.js and Firebase, enabling real-time tracking of hive conditions through ESP32 microcontrollers.
-          The app visualizes sensor data through charts and ensures continuous storage for long-term insights.
-        </p>
-      );
-    },
-  },
-  {
-  description: "NEXT JS, TAILWIND, FIREBASE, CLERK",    tag: "Group Project", // 👈 Add this line
-
-  title: "DebateX",
-  src: "/projects/debatex.webp", // Update with actual image path
-  ctaText: "Visit Site",
-  ctaLink: "https://debate-x-nrd5.vercel.app/",
-  content: () => {
-    return (
+    content: () => (
       <p>
-        DebateX is a structured online debate platform built as a university project to modernize and streamline competitive debating. 
-        It features automated timekeeping, role-based views for organizers, judges, and debaters, real-time chat, note-taking, and session recording. 
-        Built with Next.js, Tailwind CSS, Firebase, Framer Motion, and Clerk, it ensures a seamless and fair debate experience with a modern UI and engaging UX.
+        Designed, developed, and deployed the official website for VertexBMS. Leveraging a Next.js framework 
+        with Turbopack for ultra-fast load times. Structured database integrations via Prisma and added dynamic, 
+        responsive map visualizers using the Street Maps API. Built customized customer forms and CRM linkages.
       </p>
-    );
+    ),
   },
-},
-
-  
- 
+  {
+    title: "HackElite 2.0 Competition Website",
+    category: "Web & Mobile" as ProjectCategory,
+    tag: "Client Project (IEEE WIE UOM)",
+    description: "NextJS, Tailwind, Framer Motion, Vercel CI/CD",
+    src: "/projects/hackelite.png",
+    ctaText: "Visit Site",
+    ctaLink: "https://hackelite.lk",
+    content: () => (
+      <p>
+        Designed and built the registration and promotional platform for the HackElite 2.0 Hackathon organized 
+        by IEEE WIE Student Branch. Handled real-time registration processing, countdown timers, event schedules, 
+        and guidelines for teams across major state universities in Sri Lanka.
+      </p>
+    ),
+  },
+  {
+    title: "ICITR Official Website 2025",
+    category: "Web & Mobile" as ProjectCategory,
+    tag: "Client Project (UOM Faculty of IT)",
+    description: "NextJS, Tailwind, Framer Motion, Vercel CI/CD",
+    src: "/projects/icitr.webp",
+    ctaText: "Visit Site",
+    ctaLink: "https://icitr.uom.lk",
+    content: () => (
+      <p>
+        Created the official administrative and program platform for the International Conference on 
+        Information Technology and Research 2025. Supports paper submissions, keynote directories, scheduling pipelines, 
+        and ticket bookings.
+      </p>
+    ),
+  },
 ];

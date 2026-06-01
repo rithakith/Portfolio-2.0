@@ -1,38 +1,9 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-import SectionTitle from '../components/SectionTitle';
+import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function CertificationsSection() {
-  const divRef = useRef<HTMLAnchorElement>(null);
-  const [isFocused, setIsFocused] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [opacity, setOpacity] = useState(0);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (!divRef.current || isFocused) return;
-    const rect = divRef.current.getBoundingClientRect();
-    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
-
-  const handleFocus = () => {
-    setIsFocused(true);
-    setOpacity(1);
-  };
-
-  const handleBlur = () => {
-    setIsFocused(false);
-    setOpacity(0);
-  };
-
-  const handleMouseEnter = () => {
-    setOpacity(1);
-  };
-
-  const handleMouseLeave = () => {
-    setOpacity(0);
-  };
 
   const certifications = [
     {
@@ -62,74 +33,49 @@ export default function CertificationsSection() {
   ];
 
   return (
-    <div className="relative h-full overflow-hidden py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionTitle title="Certifications" />
-        <div className="sm:mt-32 mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div className="relative w-full py-4 max-w-6xl mx-auto">
+      <div className="px-2">
+        {/* Header with View All link */}
+        <div className="flex justify-between items-center border-b border-white/5 pb-2 mb-6">
+          <h3 className="text-lg font-bold text-white tracking-wide">
+            Professional Certifications
+          </h3>
+          <a
+            href="https://www.linkedin.com/in/ritharak/details/certifications/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-xs font-semibold text-color1 hover:underline transition-colors cursor-pointer"
+          >
+            <span>View All</span>
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
+        </div>
+
+        {/* Certifications Grid */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {certifications.map((cert, index) => (
             <div
               key={index}
-              className="flex flex-col justify-between rounded-2xl border border-color1 p-4 py-6 text-center text-white shadow-lg transition-transform duration-300 hover:scale-105"
+              className="flex flex-col justify-between rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] hover:border-color2/20 p-4 py-5 text-center text-white shadow-sm transition-all duration-300 hover:scale-[1.02]"
             >
               <div className="flex-1">
                 <img
                   src={cert.image}
                   alt={cert.name}
-                  className="mx-auto mb-4 h-32 w-32 object-contain"
+                  className="mx-auto mb-3 h-14 w-14 object-contain"
                 />
-                <div className="text-lg font-semibold">{cert.name}</div>
-                <div className="mb-2 text-sm text-gray-400">{cert.issuer}</div>
+                <div className="text-sm font-bold tracking-tight leading-snug px-2">{cert.name}</div>
+                <div className="mb-3 mt-1 text-[11px] text-gray-400">{cert.issuer}</div>
               </div>
               <a
                 href={cert.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-1 inline-block rounded-md bg-color1 px-4 py-3 text-sm font-medium text-white transition duration-300 hover:opacity-90"
+                className="mt-1 inline-block rounded-lg bg-color2 hover:opacity-90 px-3 py-1.5 text-xs font-semibold text-white transition duration-300"
               >
                 Verify Credential
               </a>
             </div>
-          ))}
-        </div>
-
-        {/* External Profile Buttons */}
-        <div className="mt-16 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          {[
-            {
-              label: 'Visit All My Certifications',
-              href: 'https://www.linkedin.com/in/ritharak/details/certifications/',
-            },
-            {
-              label: 'Visit My HackerRank Profile',
-              href: 'https://www.hackerrank.com/profile/ritharaedirisin1',
-            },
-          ].map(({ label, href }, i) => (
-            <a
-              key={i}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              ref={divRef}
-              onMouseMove={handleMouseMove}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className="relative inline-flex w-fit sm:px-12 px-4 h-12 items-center justify-center overflow-hidden rounded-md border-2 dark:border-[#656fe2] border-[rgb(37,150,190)] font-medium shadow-xl transition-all duration-300 ease-in-out transform hover:scale-[1.03] focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50"
-            >
-              <div
-                className="pointer-events-none absolute -inset-px transition-all duration-500 ease-out transform scale-150 blur-md"
-                style={{
-                  opacity,
-                  background: `radial-gradient(120px circle at ${position.x}px ${position.y}px, #656fe255, transparent)`,
-                }}
-              />
-           <span className="relative z-20 flex items-center gap-2 text-white bg-gradient-to-r from-[var(--color1)] to-[var(--color2)] bg-clip-text ">
-  {label}
-  <ArrowUpRight size={18} />
-</span>
-
-            </a>
           ))}
         </div>
       </div>

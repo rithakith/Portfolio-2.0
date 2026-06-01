@@ -1,110 +1,76 @@
 "use client";
 import React from "react";
-import SectionTitle from "../components/SectionTitle";
-import { ReactLenis } from "lenis/react";
+import { GraduationCap, Calendar, Award } from "lucide-react";
+
+interface EducationItem {
+  title: string;
+  institution: string;
+  duration: string;
+  details: string;
+}
+
+const educationItems: EducationItem[] = [
+  {
+    title: "BSc (Hons) in Information Technology",
+    institution: "University of Moratuwa, Faculty of IT",
+    duration: "2023 – 2027 (Expected)",
+    details: "CGPA (5 Semesters): 3.59 / 4.00",
+  },
+  {
+    title: "GCE Advanced Level (Physical Science)",
+    institution: "Visakha Vidyalaya",
+    duration: "2020 – 2022",
+    details: "Z-Score: 1.916 | 3 A's (Combined Maths, Physics, Chemistry)",
+  },
+   {
+    title: "GCE Ordinary Level",
+    institution: "Sirimavo Bandaranaike Vidyalaya",
+    duration: "2018 – 2020",
+    details: "Z-Score: 1.916 | 3 A's (Combined Maths, Physics, Chemistry)",
+  },
+];
 
 const EducationSection: React.FC = () => {
-  function hexToGlass(hex: string, opacity = 0.2) {
-    const bigint = parseInt(hex.replace("#", ""), 16);
-    const r = (bigint >> 16) & 255;
-    const g = (bigint >> 8) & 255;
-    const b = bigint & 255;
-    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-  }
   return (
-    <section id="education" className="w-full px-4 py-12 flex flex-col gap-8">
-      {/* Mobile Title */}
-      <div className="block lg:hidden">
-        <SectionTitle title="My Education" />
-      </div>
+    <section id="education" className="w-full px-2 py-4 flex flex-col gap-6 max-w-5xl mx-auto">
 
-      <ReactLenis root>
-        <section className="text-white w-full">
-          <div className="flex flex-col lg:flex-row justify-between gap-12 lg:gap-0">
-            {/* Left Column - Cards */}
-            <div className="flex flex-col gap-8 lg:gap-1 w-full lg:w-2/3">
-              {educationItems.map((item, idx) => (
-                <figure
-                  key={idx}
-                  className="sticky top-10 h-[90vh] px-2 flex flex-col lg:flex-row items-center justify-center gap-6"
-                >
-                  <article
-                    className={`w-full max-w-md rounded-lg p-6 flex flex-col lg:flex-row items-center lg:items-center justify-between gap-y-4 lg:gap-x-6 ${item.rotateClass}`}
-                    style={{
-                      background: `${hexToGlass(item.hexColor, 0.75)}`,
-                      backdropFilter: "blur(16px)",
-                      WebkitBackdropFilter: "blur(16px)",
-                      border: "1px solid rgba(255, 255, 255, 0.2)",
-                      boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-                    }}
-                  >
-                    <div className="flex-1 text-center lg:text-left">
-                      <h1 className="text-2xl font-semibold">{item.title}</h1>
-                      <p>{item.description}</p>
-                    </div>
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-48 h-auto rounded-lg self-center object-cover"
-                    />
-                  </article>
-                </figure>
-              ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {educationItems.map((item, idx) => (
+          <div
+            key={idx}
+            className="bg-white/[0.02] border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:bg-white/[0.04] hover:border-white/20 transition-all duration-300 shadow-sm"
+          >
+            <div className="flex flex-col gap-4">
+          
+
+              {/* Text Info */}
+              <div className="space-y-1">
+                <h3 className="text-lg font-semibold text-white tracking-tight flex items-center gap-2">
+                  <GraduationCap className="h-5 w-5 text-color1 flex-shrink-0" />
+                  {item.title}
+                </h3>
+                <p className="text-color2 font-medium text-xs">{item.institution}</p>
+              </div>
+
+             
             </div>
 
-            {/* Desktop Title */}
-            <div className="hidden lg:grid sticky top-0 h-screen place-content-center w-full px-4 lg:w-2/5">
-              <SectionTitle title="My Education 👩‍🎓" />
+            {/* Bottom Info Badges */}
+            <div className="border-t border-white/5 pt-4 mt-4 flex flex-col gap-2">
+              <span className="flex items-center gap-2 text-gray-400 text-[11px]">
+                <Calendar className="h-3.5 w-3.5 text-color1/60" />
+                {item.duration}
+              </span>
+              <span className="flex items-center gap-2 text-white text-[11px] font-semibold">
+                <Award className="h-3.5 w-3.5 text-color1" />
+                {item.details}
+              </span>
             </div>
           </div>
-        </section>
-      </ReactLenis>
+        ))}
+      </div>
     </section>
   );
 };
-const educationItems = [
-  {
-    title: "BSc (Hons) in IT (CGPA:3.66)",
-    description:
-      "Currently a second year undergraduate of University of Moratuwa.",
-    hexColor: "#9b691f", // green-500
-    rotateClass: "md:rotate-0",
-    image: "/moratuwa.webp",
-  },
-  {
-    title: "G.C.E. Advanced Level (3As)",
-    description:
-      "Graduated from Visakha Vidyalaya in the Maths stream with excellent results, paving the way into the tech world.",
-    hexColor: "#ffe303", // green-400
-    rotateClass: "md:-rotate-6",
-    image: "/visakha.webp",
-  },
-   
-  {
-    title: "Calcey Springboard Scholarship Program",
-    description:
-      "Completed an intensive year-long program by Calcey Technologies, gaining industry-relevant skills for software engineering.",
-    hexColor: "#9c1494", // orange-400
-    rotateClass: "md:rotate-6",
-    image: "/calcey.webp",
-  },
-  
-  {
-    title: "WSO2 DevOps & Linux Systems Training",
-    description:
-      "Currently engaged in a high-impact training program by WSO2, balancing academics and cutting-edge DevOps skills.",
-    hexColor: "#ff7300", // blue-400
-    rotateClass: "md:-rotate-6",
-    image: "/wso2.webp",
-  },
-  {
-    title: "G.C.E. Ordinary Level (9As)",
-    description:
-      "Completed with flying colors from Sirimavo Bandaranaike Vidyalaya, securing 9 A's and building a solid academic foundation.",
-    hexColor: "#fc9cb8", // red-400
-    rotateClass: "md:rotate-0",
-    image: "/sirimavo.webp",
-  },
-];
 
 export default EducationSection;

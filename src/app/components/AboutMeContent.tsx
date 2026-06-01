@@ -2,32 +2,74 @@
 
 import React from "react";
 import AboutMeImageSection from "./AboutMeImageSection";
-import { TextGenerateEffect } from "./TextGenerateEffect";
-const aboutMeWords = `Hi, I'm Rithara Kithmanthie — a third-year student at the University of Moratuwa, pursuing a BSc in Information Technology. I love diving into new technologies just to see what I can create next.
+import { Briefcase, GraduationCap, Code2 } from "lucide-react";
 
-I've worked on various projects using Next.js, Flutter, React, Angular, .NET and Springboot, and I enjoy building full-stack apps with clean architecture and smooth UI. During my internship at Calcey Technologies, I got hands-on experience in QA engineering, and I'm now looking forward to taking on more software engineering roles.
+interface SpecItem {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+}
 
-I was selected for the Linux Systems Administration and DevOps Engineering Program conducted by WSO2, where I'm currently deepening my expertise in cloud infrastructure and automation. Additionally, I serve as the Software Co-Lead of IoT & Embedded Systems Labs (IES Labs), where I help drive innovative projects at the intersection of software and hardware.
-
-As the Vice Chairwoman of IEEE Women in Engineering (WIE) – UoM, I've had the privilege of mentoring student-led projects and organizing impactful tech events that bring people together. I also placed second in the DataStorm 5.0 Analytics Competition, competing with over 150 teams from across the country.
-
-On the fun side — I'm an extrovert, a huge Marvel fan, a manga lover, and someone who enjoys connecting with people, whether it's through tech, music, or casual conversation. ✨
-
-Let's connect and create something awesome!
-
-
-`;
+const specs: SpecItem[] = [
+  {
+    icon: <Briefcase className="h-4 w-4 text-color2" />,
+    label: "Current Role",
+    value: "Software Engineering Intern @ WSO2",
+  },
+  {
+    icon: <GraduationCap className="h-4 w-4 text-color2" />,
+    label: "Academic Status",
+    value: "3rd Year Undergrad @ UOM | CGPA 3.59",
+  },
+ 
+  {
+    icon: <Code2 className="h-4 w-4 text-color2" />,
+    label: "Core Focus",
+    value: "Full-Stack Dev, Cloud Native & Open Source, AI & ML",
+  },
+];
 
 const AboutMeContent: React.FC = () => {
   return (
-    <div className="flex flex-col md:flex-row gap-6">
-      {/* Left: Image */}
+    <div className="flex flex-col md:flex-row gap-8 items-center md:items-stretch w-full">
+      {/* Left: Image Section */}
       <AboutMeImageSection />
 
-      {/* Right: Content */}
-      <div className="md:w-2/3 w-full">
-        <div className=" p-6 rounded-md h-full">
-          <TextGenerateEffect words={aboutMeWords} />
+      {/* Right: Content Section */}
+      <div className="md:w-2/3 w-full flex flex-col justify-center gap-3">
+        <div className="space-y-4">
+          {/* Welcome Tag */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-color2 border border-color2/20 text-white text-[10px] font-bold tracking-wider uppercase">
+            <span>Software Engineer / AI,ML enthusiast</span>
+          </div>
+
+          {/* Bold Scannable Headline */}
+          <h2 className="text-2xl md:text-3xl font-extrabold text-white leading-tight tracking-tight">
+            Building <span className="text-color1">robust full-stack apps</span> and <span className="text-color3">automated cloud systems</span>.
+          </h2>
+
+        </div>
+
+        {/* Quick Specs Dashboard Panel */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
+          {specs.map((spec, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-3 bg-white/[0.02] border border-white/5 rounded-xl p-3.5 hover:bg-white/[0.04] hover:border-color2/20 transition-all duration-300 group cursor-default"
+            >
+              <div className="p-2 bg-color2/5 rounded-lg border border-color2/15 flex-shrink-0 group-hover:border-color2/40 transition-colors">
+                {spec.icon}
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">
+                  {spec.label}
+                </span>
+                <span className="text-xs text-white font-bold mt-0.5 group-hover:text-color2 transition-colors">
+                  {spec.value}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
