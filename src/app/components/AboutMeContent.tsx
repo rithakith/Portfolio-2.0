@@ -36,8 +36,8 @@ const AboutMeContent: React.FC = () => {
       <AboutMeImageSection />
 
       {/* Right: Content Section */}
-      <div className="md:w-2/3 w-full flex flex-col justify-center gap-3">
-        <div className="space-y-4">
+      <div className="md:w-2/3 w-full flex flex-col justify-center items-center md:items-start text-center md:text-left gap-3">
+        <div className="space-y-4 flex flex-col items-center md:items-start">
           {/* Welcome Tag */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-color2 border border-color2/20 text-white text-[10px] font-bold tracking-wider uppercase">
             <span>Software Engineer / AI,ML enthusiast</span>
@@ -51,7 +51,7 @@ const AboutMeContent: React.FC = () => {
         </div>
 
         {/* Quick Specs Dashboard Panel */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
           {specs.map((spec, index) => (
             <div
               key={index}

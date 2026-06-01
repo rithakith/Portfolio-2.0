@@ -108,7 +108,7 @@ export default function Home() {
                   Rithara Kithmanthie 
                 </h1>
                 <p className="text-xs text-color1 font-semibold mt-1 tracking-wide">
-                  Software Engineering Intern @ WSO2
+                  Software Engineer
                 </p>
                 <p className="text-[10px] text-gray-400 mt-0.5">
                   Colombo, Western Sri Lanka
@@ -117,7 +117,7 @@ export default function Home() {
             </div>
 
             {/* Compact Mobile Quick Action Buttons */}
-            <div className="md:hidden flex items-center gap-2">
+            <div className="md:hidden flex items-center">
               <a
                 href="/Portfolio-2.0/cv.pdf"
                 target="_blank"
@@ -126,33 +126,30 @@ export default function Home() {
               >
                 <FileDown className="h-4 w-4" />
               </a>
-              <a
-                href="mailto:ritharaedirisinghe@gmail.com"
-                className="flex items-center justify-center p-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-white transition-all"
-                title="Contact Me"
-              >
-                <Mail className="h-4 w-4" />
-              </a>
             </div>
           </div>
 
           {/* Navigation Menu */}
-          <nav className="flex md:flex-col overflow-x-auto md:overflow-x-visible -mx-5 px-5 md:mx-0 md:px-0 border-t border-b md:border-t-0 md:border-b-0 border-white/5 py-2.5 md:py-0 gap-1.5 scrollbar-none">
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => setActiveTab(item.id)}
-                className={`flex items-center gap-3 px-4 py-2.5 text-xs font-semibold flex-shrink-0 whitespace-nowrap md:w-full transition-all duration-200 border-l-2 border-b-2 md:border-b-transparent ${
-                  activeTab === item.id
-                    ? "text-white bg-white/[0.05] border-l-color2 border-b-color2 md:border-l-color2 md:border-b-transparent rounded-lg md:rounded-r-lg md:rounded-l-none"
-                    : "text-gray-400 hover:text-white hover:bg-white/5 border-transparent"
-                }`}
-              >
-                {item.icon}
-                {item.label}
-              </button>
-            ))}
-          </nav>
+          <div className="relative -mx-5 px-5 md:mx-0 md:px-0">
+            <nav className="flex md:flex-col overflow-x-auto md:overflow-x-visible pl-0 pr-8 md:mx-0 md:px-0 border-t border-b md:border-t-0 md:border-b-0 border-white/5 py-2.5 md:py-0 gap-1.5 scrollbar-none">
+              {menuItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveTab(item.id)}
+                  className={`flex items-center gap-3 px-4 py-2.5 text-xs font-semibold flex-shrink-0 whitespace-nowrap md:w-full transition-all duration-200 border-l-2 border-b-2 md:border-b-transparent ${
+                    activeTab === item.id
+                      ? "text-white bg-white/[0.05] border-l-color2 border-b-color2 md:border-l-color2 md:border-b-transparent rounded-lg md:rounded-r-lg md:rounded-l-none"
+                      : "text-gray-400 hover:text-white hover:bg-white/5 border-transparent"
+                  }`}
+                >
+                  {item.icon}
+                  {item.label}
+                </button>
+              ))}
+            </nav>
+            {/* Elegant Fading Edge Indicator to show it's scrollable on mobile */}
+            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-background via-background/80 to-transparent pointer-events-none md:hidden" />
+          </div>
         </div>
 
         {/* Footer & Socials Section (Desktop) */}

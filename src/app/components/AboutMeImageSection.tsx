@@ -3,8 +3,8 @@ import Image from "next/image";
 
 const AboutMeImageSection: React.FC = () => {
   return (
-    <div className="md:w-1/3 w-full">
-      <div className="p-6 rounded-md flex items-center justify-center h-full">
+    <div className="md:w-1/3 w-full max-w-[240px] md:max-w-none">
+      <div className="py-4 px-2 md:p-6 rounded-md flex items-center justify-center h-full">
         <Image
           src="/Portfolio-2.0/aboutmeimg.jpg"
           alt="About Me"
