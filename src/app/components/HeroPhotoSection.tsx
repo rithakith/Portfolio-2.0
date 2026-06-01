@@ -80,7 +80,7 @@ const HeroPhotoSection: React.FC = () => {
       <section className=' dark:bg-black  rounded-lg w-full relative'>
         <figure style={{ clipPath: 'url(#clip-splash1)' }} className="relative aspect-square w-full">
           <Image
-            src='/me.webp'
+            src='/Portfolio-2.0/me.webp'
             alt='Rithara'
             fill
             priority

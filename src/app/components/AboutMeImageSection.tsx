@@ -6,7 +6,7 @@ const AboutMeImageSection: React.FC = () => {
     <div className="md:w-1/3 w-full">
       <div className="p-6 rounded-md flex items-center justify-center h-full">
         <Image
-          src="/aboutmeimg.jpg"
+          src="/Portfolio-2.0/aboutmeimg.jpg"
           alt="About Me"
           width={300}
           height={300}

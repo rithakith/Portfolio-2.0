@@ -10,25 +10,25 @@ export default function CertificationsSection() {
     {
       name: 'AWS Certified Cloud Practitioner',
       issuer: 'Amazon Web Services',
-      image: '/certificates/aws.png',
+      image: '/Portfolio-2.0/certificates/aws.png',
       url: 'https://courses.edx.org/certificates/35c84e67d5744478a069f7d01bb2ee7d',
     },
     {
       name: 'Security, Compliance, and Identity Fundamentals (SC-900)',
       issuer: 'Microsoft',
-      image: '/certificates/sc900.png',
+      image: '/Portfolio-2.0/certificates/sc900.png',
       url: 'https://www.credly.com/earner/earned/badge/8b456b9c-fed0-4ce7-94e5-672040b13a97',
     },
     {
       name: 'Azure Fundamentals (AZ-900)',
       issuer: 'Microsoft',
-      image: '/certificates/az900.png',
+      image: '/Portfolio-2.0/certificates/az900.png',
       url: 'https://www.credly.com/earner/earned/badge/9a484eb5-94ad-4052-a7df-4d0aef56763d',
     },
     {
       name: `CS50's Introduction to Computer Science`,
       issuer: 'Harvard University',
-      image: '/certificates/cs50.png',
+      image: '/Portfolio-2.0/certificates/cs50.png',
       url: 'https://courses.edx.org/certificates/9bcca14b97ed452596ec7c9aea70b186',
     },
   ];

@@ -307,7 +307,7 @@ const cards = [
     category: "Web & Mobile" as ProjectCategory,
     tag: "Client Project (Epic Lanka)",
     description: "ASP.NET Core, Flutter, PostgreSQL, AWS EC2, Mapbox, GitLab",
-    src: "/projects/valuation.webp",
+    src: "/Portfolio-2.0/projects/valuation.webp",
     content: () => (
       <p>
         Developed a highly secure property valuation system for Sri Lanka&apos;s Valuation Department. 
@@ -322,7 +322,7 @@ const cards = [
     category: "DevOps & Cloud" as ProjectCategory,
     tag: "DevOps / Infrastructure Project",
     description: "Terraform, Kubernetes, ArgoCD, Istio, Jaeger, AWS, Linux",
-    src: "/wso2.webp",
+    src: "/Portfolio-2.0/wso2.webp",
     ctaText: "Read on Medium",
     ctaLink: "https://medium.com/@ritharaedirisinghe/my-journey-through-the-wso2-linux-systems-administration-devops-engineering-training-f15e22af9246",
     content: () => (
@@ -339,7 +339,7 @@ const cards = [
     category: "Systems & AI" as ProjectCategory,
     tag: "2nd Place - Hacktivate Hackathon",
     description: "FastAPI, NextJS, Firebase Firestore, Gemini AI, WebSockets",
-    src: "/projects/debatex.webp",
+    src: "/Portfolio-2.0/projects/debatex.webp",
     ctaText: "View GitHub",
     ctaLink: "https://github.com/rithakith",
     content: () => (
@@ -355,7 +355,7 @@ const cards = [
     category: "Systems & AI" as ProjectCategory,
     tag: "Open Source Contribution",
     description: "Go, Open Source, Developer Tooling, JSON logs stream",
-    src: "/projects/logdy-rk.png",
+    src: "/Portfolio-2.0/projects/logdy-rk.png",
     ctaText: "View GitHub",
     ctaLink: "https://github.com/rithakith/logdy-core-rk",
     content: () => (
@@ -370,7 +370,7 @@ const cards = [
     category: "Web & Mobile" as ProjectCategory,
     tag: "Client Project (UOM Admin)",
     description: "Python, Tkinter, SQLite, SMTP Mail Client",
-    src: "/projects/finance.webp",
+    src: "/Portfolio-2.0/projects/finance.webp",
     content: () => (
       <p>
         Streamlined administrative payroll operations by creating a standalone desktop automation client for the University of Moratuwa Internal Administration Division. 
@@ -383,7 +383,7 @@ const cards = [
     category: "Web & Mobile" as ProjectCategory,
     tag: "Client Individual Project",
     description: "NextJS, Turbopack, Tailwind CSS, Prisma, Street Maps API",
-    src: "/projects/vertextbms.webp",
+    src: "/Portfolio-2.0/projects/vertextbms.webp",
     ctaText: "Visit Site",
     ctaLink: "https://vertexbms.com/",
     content: () => (
@@ -399,7 +399,7 @@ const cards = [
     category: "Web & Mobile" as ProjectCategory,
     tag: "Client Project (IEEE WIE UOM)",
     description: "NextJS, Tailwind, Framer Motion, Vercel CI/CD",
-    src: "/projects/hackelite.png",
+    src: "/Portfolio-2.0/projects/hackelite.png",
     ctaText: "Visit Site",
     ctaLink: "https://hackelite.lk",
     content: () => (
@@ -415,7 +415,7 @@ const cards = [
     category: "Web & Mobile" as ProjectCategory,
     tag: "Client Project (UOM Faculty of IT)",
     description: "NextJS, Tailwind, Framer Motion, Vercel CI/CD",
-    src: "/projects/icitr.webp",
+    src: "/Portfolio-2.0/projects/icitr.webp",
     ctaText: "Visit Site",
     ctaLink: "https://icitr.uom.lk",
     content: () => (

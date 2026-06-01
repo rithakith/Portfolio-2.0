@@ -90,7 +90,7 @@ export default function Home() {
             <div className="flex items-center md:items-center flex-row md:flex-col gap-4 md:gap-4">
               <div className="relative h-12 w-12 md:h-20 md:w-20 rounded-full overflow-hidden border border-color1/20 flex-shrink-0 bg-white/5 transition-transform duration-300 hover:scale-105">
                 <Image
-                  src="/aboutmeimg.webp"
+                  src="/Portfolio-2.0/aboutmeimg.webp"
                   alt="Rithara Kithmanthie Profile Photo"
                   fill
                   className="object-cover"

@@ -22,7 +22,7 @@ const FooterSection: React.FC = () => {
           className="hover:scale-110 transition-transform"
         >
           <Image
-            src="/socialmedia/linkedin.png"
+            src="/Portfolio-2.0/socialmedia/linkedin.png"
             alt="LinkedIn"
             width={96}
             height={96}
@@ -38,7 +38,7 @@ const FooterSection: React.FC = () => {
           className="hover:scale-110 transition-transform"
         >
           <Image
-            src="/socialmedia/github.png"
+            src="/Portfolio-2.0/socialmedia/github.png"
             alt="GitHub"
             width={96}
             height={96}
@@ -54,7 +54,7 @@ const FooterSection: React.FC = () => {
           className="hover:scale-110 transition-transform"
         >
           <Image
-            src="/socialmedia/medium.png"
+            src="/Portfolio-2.0/socialmedia/medium.png"
             alt="Medium"
             width={96}
             height={96}
@@ -68,7 +68,7 @@ const FooterSection: React.FC = () => {
           className="hover:scale-110 transition-transform"
         >
           <Image
-            src="/socialmedia/gmail.png"
+            src="/Portfolio-2.0/socialmedia/gmail.png"
             alt="Email"
             width={96}
             height={96}
@@ -82,7 +82,7 @@ const FooterSection: React.FC = () => {
           className="hover:scale-110 transition-transform"
         >
           <Image
-            src="/socialmedia/whatsapp.png"
+            src="/Portfolio-2.0/socialmedia/whatsapp.png"
             alt="WhatsApp"
             width={96}
             height={96}
