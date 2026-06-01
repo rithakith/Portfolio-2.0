@@ -1,10 +1,8 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
-
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: isProd ? "/Portfolio-2.0" : "",
+  basePath: "/Portfolio-2.0",
   images: {
     loader: "custom",
     loaderFile: "./src/app/image-loader.ts",

@@ -112,7 +112,7 @@ export default function Home() {
             {/* Compact Mobile Quick Action Buttons */}
             <div className="md:hidden flex items-center gap-2">
               <a
-                href="/cv.pdf"
+                href="/Portfolio-2.0/cv.pdf"
                 target="_blank"
                 className="flex items-center justify-center p-2 rounded-xl border border-color2/30 bg-color2/10 hover:bg-color2/20 text-color2 transition-all"
                 title="Get My CV"

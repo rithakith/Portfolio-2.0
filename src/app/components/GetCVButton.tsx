@@ -4,7 +4,7 @@ import { FileDown } from 'lucide-react'
 
 const ButtonGetCv = () => {
   const handleClick = () => {
-    window.open('/cv.pdf', '_blank')
+    window.open('/Portfolio-2.0/cv.pdf', '_blank')
   }
 
   return (
