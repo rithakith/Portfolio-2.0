@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function CertificationsSection() {
@@ -59,9 +60,11 @@ export default function CertificationsSection() {
               className="flex flex-col justify-between rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] hover:border-color2/20 p-4 py-5 text-center text-white shadow-sm transition-all duration-300 hover:scale-[1.02]"
             >
               <div className="flex-1">
-                <img
+                <Image
                   src={cert.image}
                   alt={cert.name}
+                  width={56}
+                  height={56}
                   className="mx-auto mb-3 h-14 w-14 object-contain"
                 />
                 <div className="text-sm font-bold tracking-tight leading-snug px-2">{cert.name}</div>

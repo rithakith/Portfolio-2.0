@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 
 const FooterSection: React.FC = () => {
   const handleEmailClick = () => {
@@ -20,7 +21,13 @@ const FooterSection: React.FC = () => {
           rel="noopener noreferrer"
           className="hover:scale-110 transition-transform"
         >
-          <img src="/socialmedia/linkedin.png" alt="LinkedIn" className="sm:w-24 w-12 h-12 sm:h-24" />
+          <Image
+            src="/socialmedia/linkedin.png"
+            alt="LinkedIn"
+            width={96}
+            height={96}
+            className="sm:w-24 w-12 h-12 sm:h-24 object-contain"
+          />
         </a>
 
         {/* GitHub */}
@@ -30,7 +37,13 @@ const FooterSection: React.FC = () => {
           rel="noopener noreferrer"
           className="hover:scale-110 transition-transform"
         >
-          <img src="/socialmedia/github.png" alt="GitHub" className="sm:w-24 w-12 h-12 sm:h-24" />
+          <Image
+            src="/socialmedia/github.png"
+            alt="GitHub"
+            width={96}
+            height={96}
+            className="sm:w-24 w-12 h-12 sm:h-24 object-contain"
+          />
         </a>
 
         {/* Medium */}
@@ -40,7 +53,13 @@ const FooterSection: React.FC = () => {
           rel="noopener noreferrer"
           className="hover:scale-110 transition-transform"
         >
-          <img src="/socialmedia/medium.png" alt="Medium" className="sm:w-24 w-12 h-12 sm:h-24" />
+          <Image
+            src="/socialmedia/medium.png"
+            alt="Medium"
+            width={96}
+            height={96}
+            className="sm:w-24 w-12 h-12 sm:h-24 object-contain"
+          />
         </a>
 
         {/* Gmail */}
@@ -48,7 +67,13 @@ const FooterSection: React.FC = () => {
           onClick={handleEmailClick}
           className="hover:scale-110 transition-transform"
         >
-          <img src="/socialmedia/gmail.png" alt="Email" className="sm:w-24 w-12 h-12 sm:h-24" />
+          <Image
+            src="/socialmedia/gmail.png"
+            alt="Email"
+            width={96}
+            height={96}
+            className="sm:w-24 w-12 h-12 sm:h-24 object-contain"
+          />
         </button>
 
         {/* WhatsApp */}
@@ -56,7 +81,13 @@ const FooterSection: React.FC = () => {
           onClick={handleWhatsAppClick}
           className="hover:scale-110 transition-transform"
         >
-          <img src="/socialmedia/whatsapp.png" alt="WhatsApp" className="sm:w-24 w-12 h-12 sm:h-24" />
+          <Image
+            src="/socialmedia/whatsapp.png"
+            alt="WhatsApp"
+            width={96}
+            height={96}
+            className="sm:w-24 w-12 h-12 sm:h-24 object-contain"
+          />
         </button>
       </div>
 
