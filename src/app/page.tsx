@@ -33,10 +33,31 @@ export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tabParam = params.get("tab") as TabId;
+    const validTabs: TabId[] = ["overview", "experience", "projects", "skills", "achievements", "education", "volunteering", "blogs"];
+    if (tabParam && validTabs.includes(tabParam)) {
+      setActiveTab(tabParam);
+    }
+  }, []);
+
+  useEffect(() => {
     if (contentRef.current) {
       contentRef.current.scrollTop = 0;
     }
   }, [activeTab]);
+
+  const handleTabChange = (tabId: TabId) => {
+    setActiveTab(tabId);
+    
+    const params = new URLSearchParams(window.location.search);
+    params.set("tab", tabId);
+    if (tabId !== "projects") {
+      params.delete("project");
+    }
+    const newRelativePathQuery = window.location.pathname + "?" + params.toString();
+    window.history.replaceState(null, "", newRelativePathQuery);
+  };
 
   const menuItems: MenuItem[] = [
     { id: "overview", label: "Overview", icon: <User className="h-4 w-4" /> },
@@ -135,7 +156,7 @@ export default function Home() {
               {menuItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => setActiveTab(item.id)}
+                  onClick={() => handleTabChange(item.id)}
                   className={`flex items-center gap-3 px-4 py-2.5 text-xs font-semibold flex-shrink-0 whitespace-nowrap md:w-full transition-all duration-200 border-l-2 border-b-2 md:border-b-transparent ${
                     activeTab === item.id
                       ? "text-white bg-white/[0.05] border-l-color2 border-b-color2 md:border-l-color2 md:border-b-transparent rounded-lg md:rounded-r-lg md:rounded-l-none"

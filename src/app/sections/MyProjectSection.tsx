@@ -6,6 +6,13 @@ import { useOutsideClick } from "@/hooks/use-outside-click";
 
 type ProjectCategory = "All" | "Web & Mobile" | "DevOps & Cloud" | "Systems & AI";
 
+const getSlug = (title: string) => {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
+};
+
 export default function MyProjectSection() {
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
     null
@@ -37,6 +44,29 @@ export default function MyProjectSection() {
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
+  }, [active]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const projectSlug = params.get("project");
+    if (projectSlug) {
+      const matchedCard = cards.find(card => getSlug(card.title) === projectSlug);
+      if (matchedCard) {
+        setActive(matchedCard);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (active && typeof active === "object") {
+      params.set("project", getSlug(active.title));
+      params.set("tab", "projects");
+    } else if (active === null) {
+      params.delete("project");
+    }
+    const newRelativePathQuery = window.location.pathname + "?" + params.toString();
+    window.history.replaceState(null, "", newRelativePathQuery);
   }, [active]);
 
   useOutsideClick(ref, () => setActive(null));
@@ -310,10 +340,10 @@ const cards = [
     src: "/Portfolio-2.0/projects/valuation.webp",
     content: () => (
       <p>
-        Developed a highly secure property valuation system for Sri Lanka&apos;s Valuation Department. 
-        Digitized crucial land acquisition, rating, and tax workflows. Built with a full-stack architecture 
+        Developed a property valuation system for Sri Lanka&apos;s Valuation Department. 
+        Digitized land acquisition, rating, and rating assessment workflows. Built with a full-stack architecture 
         using ASP.NET Core and Flutter, integrating Mapbox for geospatial mobile mapping, automated reporting 
-        tools, and robust multi-language support. Hosted the backend on AWS EC2.
+        tools, and robust multi-language support(sinhala,english,tamil). Hosted the backend on AWS EC2.
       </p>
     ),
   },
@@ -344,8 +374,8 @@ const cards = [
     ctaLink: "https://github.com/rithakith",
     content: () => (
       <p>
-        Co-developed an AI-powered incident reporting platform built for high-stakes real-time security tracking. 
-        Integrates Gemini AI for intelligent threat analysis, WebSockets for live, secure collaboration dashboards, 
+        Developed an AI-powered incident reporting platform built for high-stakes real-time security tracking. 
+        Integrates Gemini AI with llms for intelligent threat analysis, WebSockets for live, secure collaboration dashboards, 
         and secure media/evidence uploads to Firebase. Built custom automated compliance reports and analytics.
       </p>
     ),
